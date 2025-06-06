@@ -360,7 +360,7 @@ export default function Home() {
           </div>
         </div>
         <iframe
-          src="http://biohub.fyi/embed/kenny"
+          src="https://biohub.fyi/embed/kenny"
           style={{
             minHeight: "384px",
             maxWidth: "320px",
