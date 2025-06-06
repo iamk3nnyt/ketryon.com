@@ -1,3 +1,4 @@
+import { Accordion } from "@/components/accordion";
 import { AppImage } from "@/components/app-image";
 import { Calendar } from "@/components/calendar";
 import { Marquee } from "@/components/marquee";
@@ -262,6 +263,52 @@ export default function Home() {
             </p>
             <span className="text-xs text-gray-500">Ava, Operations Lead</span>
           </div>
+        </div>
+      </section>
+      {/* FAQ Section */}
+      <section className="mt-8 flex flex-col gap-y-8">
+        <span className="mb-2 w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+          FAQ
+        </span>
+        <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+          Frequently Asked Questions
+        </h2>
+        <div>
+          <Accordion
+            items={[
+              {
+                id: "platforms",
+                title: "What platforms do you support?",
+                content:
+                  "We can integrate with any platform you already use, including Slack, Notion, Jira, Google Workspace, Microsoft Teams, and more.",
+              },
+              {
+                id: "open-source",
+                title: "Are your solutions open source?",
+                content:
+                  "Yes! All our work is open source by default, so you can audit, extend, or reuse anything we build.",
+              },
+              {
+                id: "transparency",
+                title: "How do you ensure transparency?",
+                content:
+                  "We provide real-time project updates, clear communication, and full access to our process and codebase.",
+              },
+              {
+                id: "team-collab",
+                title: "Can you work with our existing team?",
+                content:
+                  "Absolutely. We collaborate directly with your team in your preferred tools and workflows.",
+              },
+              {
+                id: "custom-solutions",
+                title: "What if we need something custom?",
+                content:
+                  "We specialize in custom solutions and integrations tailored to your unique needs.",
+              },
+            ]}
+            className="mt-4"
+          />
         </div>
       </section>
     </main>
