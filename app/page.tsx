@@ -60,6 +60,117 @@ export default function Home() {
         <Marquee />
       </div>
       <Calendar />
+      {/* Open Source & Transparency Section */}
+      <section className="flex flex-col gap-y-4">
+        <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+          Open Source & Transparency
+        </span>
+        <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+          Open by Default, Transparent by Design
+        </h2>
+        <div className="mb-4 max-w-2xl text-gray-700">
+          <b>Why Open Source?</b>
+          <p className="mt-2 text-base font-light">
+            We believe that great software should be accessible, auditable, and
+            collaborative. By making our work open source, we invite our clients
+            and the community to see how things are built, contribute, and trust
+            in our process. Transparency isn't just a value—it's how we operate,
+            every day.
+          </p>
+        </div>
+        <div className="flex flex-col gap-6 md:flex-row md:gap-8">
+          <div className="flex-1 rounded-xl border border-gray-100 p-5">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="text-yellow-400">★★★★★</span>
+            </div>
+            <p className="text-gray-800">
+              "Seeing the code and process in real time gave us total
+              confidence. We always know what's happening and why."
+            </p>
+            <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
+              <span className="font-semibold">Alex P.</span>
+              <span>Product Owner</span>
+            </div>
+          </div>
+          <div className="flex-1 rounded-xl border border-gray-100 p-5">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="text-yellow-400">★★★★★</span>
+            </div>
+            <p className="text-gray-800">
+              "Open source means we can build on top of their work and trust
+              that there are no hidden surprises."
+            </p>
+            <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
+              <span className="font-semibold">Jamie L.</span>
+              <span>CTO</span>
+            </div>
+          </div>
+        </div>
+        <div className="mt-6">
+          <h3 className="mb-1 text-lg font-semibold">
+            Transparency Benefits Everyone
+          </h3>
+          <p className="max-w-2xl text-gray-600">
+            When you can see how your project is built, you gain peace of mind
+            and the freedom to innovate. Our open approach ensures you're always
+            in the loop, and the community benefits from shared knowledge and
+            continuous improvement.
+          </p>
+        </div>
+      </section>
+      {/* Services & Products Section */}
+      <section className="flex flex-col gap-y-8">
+        <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+          Services & Products That Drive Results
+        </h2>
+        <p className="max-w-2xl text-base font-light text-gray-700">
+          We build and launch products that solve real problems, and offer
+          services that help you succeed at every stage of your journey.
+        </p>
+        <ul className="mb-4 flex flex-col gap-2 text-base font-light text-gray-700">
+          <li className="flex items-center gap-2">
+            <span>✔️</span> Custom Software Development
+          </li>
+          <li className="flex items-center gap-2">
+            <span>✔️</span> Product Design & Prototyping
+          </li>
+          <li className="flex items-center gap-2">
+            <span>✔️</span> Technical Consulting
+          </li>
+          <li className="flex items-center gap-2">
+            <span>✔️</span> Open Source Solutions
+          </li>
+          <li className="flex items-center gap-2">
+            <span>✔️</span> Ongoing Support & Maintenance
+          </li>
+        </ul>
+        <div className="py-4">
+          <img
+            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Our work"
+            className="h-96 w-full rounded-xl object-cover"
+          />
+          <div className="mt-2 text-center text-xs text-gray-400">
+            Photo by{" "}
+            <a
+              href="https://unsplash.com/@brucemars"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              bruce mars
+            </a>{" "}
+            on Unsplash
+          </div>
+        </div>
+        <div className="border-l-4 border-blue-500 pl-4 text-gray-800 italic">
+          “Their products and services helped us launch faster and scale with
+          confidence.”
+          <div className="mt-2 text-sm text-gray-500">
+            Taylor R. • Startup Founder
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
