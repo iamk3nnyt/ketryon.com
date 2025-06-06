@@ -61,7 +61,7 @@ export default function Home() {
       <Calendar />
       {/* Open Source & Transparency Section */}
       <section className="flex flex-col gap-y-4">
-        <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+        <span className="mb-2 w-fit rounded-md bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
           Open Source & Transparency
         </span>
         <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -164,11 +164,103 @@ export default function Home() {
             on Unsplash
           </div>
         </div>
-        <div className="border-l-4 border-blue-500 pl-4 text-gray-800 italic">
-          “Their products and services helped us launch faster and scale with
-          confidence.”
+        <div className="border-l-4 border-green-500 pl-4 text-gray-800 italic">
+          &quot;Their products and services helped us launch faster and scale
+          with confidence.&quot;
           <div className="mt-2 text-sm text-gray-500">
             Taylor R. • Startup Founder
+          </div>
+        </div>
+      </section>
+      {/* Platform Flexibility Section */}
+      <section className="mt-8 flex flex-col gap-y-8">
+        <span className="mb-2 w-fit rounded-md bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">
+          Platform Flexibility
+        </span>
+        <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+          We adapt to your workflow, not the other way around
+        </h2>
+        <p className="max-w-2xl text-base font-light text-gray-700">
+          Whether you use Slack, Notion, Jira, Google Workspace, or any other
+          platform, we seamlessly integrate with your existing tools. Our team
+          is flexible and ready to adapt to your unique processes—no need to
+          change what already works for you.
+        </p>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">Seamless Integration</h3>
+            <p className="font-light text-gray-700">
+              We work directly within your current stack—collaborating in your
+              preferred tools, automating workflows, and ensuring everything
+              stays connected. No disruption, just results.
+            </p>
+          </div>
+          <div>
+            <h3 className="mb-2 text-lg font-semibold">Custom Solutions</h3>
+            <p className="font-light text-gray-700">
+              Need something special? We build custom integrations and adapt our
+              process to fit your business, not the other way around. Your
+              workflow, your rules.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-4 py-4 opacity-70">
+          <div className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gray-200 bg-white">
+            <div className="relative h-7 w-7">
+              <AppImage src="/notion.svg" alt="Notion" className="h-7 w-7" />
+            </div>
+          </div>
+          <div className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gray-200 bg-white">
+            <div className="relative h-7 w-7">
+              <AppImage src="/jira.svg" alt="Jira" className="h-7 w-7" />
+            </div>
+          </div>
+          <div className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gray-200 bg-white">
+            <div className="relative h-7 w-7">
+              <AppImage src="/slack-icon.svg" alt="Slack" className="h-7 w-7" />
+            </div>
+          </div>
+          <div className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gray-200 bg-white">
+            <div className="relative h-7 w-7">
+              <AppImage src="/google.svg" alt="Google" className="h-7 w-7" />
+            </div>
+          </div>
+          <div className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-gray-200 bg-white">
+            <div className="relative h-7 w-7">
+              <AppImage
+                src="/microsoft-teams-color.svg"
+                alt="Microsoft Teams"
+                className="h-7 w-7"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="flex flex-col items-start gap-2">
+            <span className="text-yellow-400">★★★★★</span>
+            <p className="text-sm text-gray-800">
+              &quot;They integrated with our tools so quickly, it felt like
+              they&apos;d always been part of our team.&quot;
+            </p>
+            <span className="text-xs text-gray-500">
+              Morgan, Product Manager
+            </span>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <span className="text-yellow-400">★★★★★</span>
+            <p className="text-sm text-gray-800">
+              &quot;No need to migrate or retrain—everything just worked with
+              our existing setup.&quot;
+            </p>
+            <span className="text-xs text-gray-500">Samir, CTO</span>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <span className="text-yellow-400">★★★★★</span>
+            <p className="text-sm text-gray-800">
+              &quot;Their flexibility saved us weeks of onboarding and change
+              management.&quot;
+            </p>
+            <span className="text-xs text-gray-500">Ava, Operations Lead</span>
           </div>
         </div>
       </section>

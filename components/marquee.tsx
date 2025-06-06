@@ -76,7 +76,7 @@ export const Marquee: React.FC<Props> = ({
             {[...items, ...items].map(({ icon, name }, index) => (
               <div
                 key={index}
-                className="mx-8 flex items-center whitespace-nowrap"
+                className="mx-8 flex items-center whitespace-nowrap text-gray-600"
               >
                 {icon}
                 <span className="text-lg font-semibold">{name}</span>

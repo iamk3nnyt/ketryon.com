@@ -36,7 +36,7 @@ export const TrustBadge: React.FC = () => {
           </div>
         ))}
       </div>
-      <small className="flex items-center gap-1 text-sm leading-none font-medium">
+      <small className="flex items-center gap-1 text-sm leading-none font-medium text-gray-600">
         <b>100+ clients</b>{" "}
         <span className="font-light">trust our services</span>
       </small>
