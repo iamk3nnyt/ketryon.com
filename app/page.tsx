@@ -32,7 +32,7 @@ function Header() {
       </p>
       <TrustBadge />
       <Link
-        href="/contact"
+        href="/#book-a-call"
         className="group inline-flex w-fit items-center gap-x-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-7 py-3 text-base font-semibold text-white shadow transition hover:from-blue-700 hover:to-blue-600 focus:ring-2 focus:ring-blue-200 focus:outline-none"
       >
         <span>Start Your Project</span>

@@ -15,7 +15,7 @@ export function Calendar() {
     })();
   }, []);
   return (
-    <div className="rounded-xl border border-gray-200 py-4">
+    <div id="book-a-call" className="rounded-xl border border-gray-200 py-4">
       <Cal
         namespace="30min"
         calLink={process.env.NEXT_PUBLIC_CAL_LINK!}
