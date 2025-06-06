@@ -2,8 +2,6 @@
 
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
-const GlobeGL = dynamic(() => import("./components/GlobeGL"), { ssr: false });
 
 function Header() {
   return (
@@ -25,7 +23,6 @@ export default function Home() {
   return (
     <main className="relative mx-auto flex w-full max-w-5xl flex-col gap-y-12 px-4 py-16">
       <Header />
-      <GlobeGL />
       <div className="relative mx-auto flex w-full max-w-xl flex-col justify-between gap-y-4 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50/60 to-white p-8 shadow-sm backdrop-blur-sm">
         <div className="flex flex-col gap-y-2">
           <h3 className="font-semibold tracking-tight text-gray-900 sm:text-lg">
