@@ -16,7 +16,7 @@ export const TrustBadge: React.FC = () => {
     { src: Work, alt: "work memoji" },
   ];
   return (
-    <div className="flex flex-col items-center gap-y-4">
+    <div className="flex flex-col gap-y-4">
       <div className="flex -space-x-2">
         {avatars.map((avatar, idx) => (
           <div
