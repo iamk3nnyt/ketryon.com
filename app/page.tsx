@@ -266,7 +266,7 @@ export default function Home() {
         </div>
       </section>
       {/* FAQ Section */}
-      <section className="mt-8 flex flex-col gap-y-4">
+      <section className="mt-8 flex flex-col gap-y-8">
         <span className="w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
           FAQ
         </span>
@@ -307,12 +307,11 @@ export default function Home() {
                   "We specialize in custom solutions and integrations tailored to your unique needs.",
               },
             ]}
-            className="mt-4"
           />
         </div>
       </section>
       {/* Blog Section */}
-      <section className="mt-8 flex flex-col gap-y-4">
+      <section className="mt-8 flex flex-col gap-y-8">
         <span className="w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
           Blog
         </span>
