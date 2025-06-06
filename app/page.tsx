@@ -63,7 +63,7 @@ export default function Home() {
       <Calendar />
       {/* How We Stay Up-to-Date Section (was: webarc.day Product Spotlight) */}
       <section className="mt-12 flex flex-col gap-y-6">
-        <span className="mb-2 w-fit rounded-md bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700">
+        <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
           How We Stay Current
         </span>
         <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -86,7 +86,7 @@ export default function Home() {
             href="https://webarc.day"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 rounded text-sm font-medium text-pink-700 underline underline-offset-2 transition hover:text-pink-900 focus:ring-2 focus:ring-pink-200 focus:outline-none"
+            className="inline-flex items-center gap-1 rounded text-sm font-medium text-blue-700 underline underline-offset-2 transition hover:text-blue-900 focus:ring-2 focus:ring-blue-200 focus:outline-none"
             aria-label="Visit webarc.day (opens in a new tab)"
           >
             Visit webarc.day
@@ -94,7 +94,7 @@ export default function Home() {
           </a>
         </div>
         <div className="relative overflow-hidden">
-          <div className="absolute top-[15%] left-0 z-20 md:top-[30%]">
+          <div className="absolute left-0 z-20 hidden sm:top-[20%] sm:block lg:top-[30%]">
             <span
               className={cn(
                 "block rotate-12 tracking-tighter",
