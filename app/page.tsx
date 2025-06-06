@@ -1,5 +1,4 @@
-"use client";
-
+import { AppImage } from "@/components/app-image";
 import { Calendar } from "@/components/calendar";
 import { Marquee } from "@/components/marquee";
 import { TrustBadge } from "@/components/trust-badge";
@@ -74,8 +73,8 @@ export default function Home() {
             We believe that great software should be accessible, auditable, and
             collaborative. By making our work open source, we invite our clients
             and the community to see how things are built, contribute, and trust
-            in our process. Transparency isn't just a value—it's how we operate,
-            every day.
+            in our process. Transparency isn&apos;t just a value—it&apos;s how
+            we operate, every day.
           </p>
         </div>
         <div className="flex flex-col gap-6 md:flex-row md:gap-8">
@@ -84,8 +83,8 @@ export default function Home() {
               <span className="text-yellow-400">★★★★★</span>
             </div>
             <p className="text-gray-800">
-              "Seeing the code and process in real time gave us total
-              confidence. We always know what's happening and why."
+              &quot;Seeing the code and process in real time gave us total
+              confidence. We always know what&apos;s happening and why.&quot;
             </p>
             <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
               <span className="font-semibold">Alex P.</span>
@@ -97,8 +96,8 @@ export default function Home() {
               <span className="text-yellow-400">★★★★★</span>
             </div>
             <p className="text-gray-800">
-              "Open source means we can build on top of their work and trust
-              that there are no hidden surprises."
+              &quot;Open source means we can build on top of their work and
+              trust that there are no hidden surprises.&quot;
             </p>
             <div className="mt-3 flex items-center gap-2 text-sm text-gray-500">
               <span className="font-semibold">Jamie L.</span>
@@ -112,9 +111,9 @@ export default function Home() {
           </h3>
           <p className="max-w-2xl text-gray-600">
             When you can see how your project is built, you gain peace of mind
-            and the freedom to innovate. Our open approach ensures you're always
-            in the loop, and the community benefits from shared knowledge and
-            continuous improvement.
+            and the freedom to innovate. Our open approach ensures you&apos;re
+            always in the loop, and the community benefits from shared knowledge
+            and continuous improvement.
           </p>
         </div>
       </section>
@@ -145,20 +144,22 @@ export default function Home() {
           </li>
         </ul>
         <div className="py-4">
-          <img
-            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Our work"
-            className="h-96 w-full rounded-xl object-cover"
-          />
+          <div className="relative h-96">
+            <AppImage
+              src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Our work"
+              className="h-full w-full rounded-xl object-cover"
+            />
+          </div>
           <div className="mt-2 text-center text-xs text-gray-400">
             Photo by{" "}
             <a
-              href="https://unsplash.com/@brucemars"
+              href="https://unsplash.com/photos/person-working-on-blue-and-white-paper-on-board-qWwpHwip31M"
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
             >
-              bruce mars
+              @alvarordesign
             </a>{" "}
             on Unsplash
           </div>

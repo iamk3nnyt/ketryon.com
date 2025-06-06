@@ -25,7 +25,6 @@ export const TrustBadge: React.FC = () => {
               "inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gray-200 text-xs font-medium select-none",
               avatar.bgClassName,
             )}
-            role="img"
             aria-label={avatar.alt}
             title={avatar.alt}
           >
