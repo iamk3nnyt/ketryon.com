@@ -4,8 +4,8 @@ import Glad from "@/public/glad.png";
 import Smile from "@/public/smile.png";
 import Wink from "@/public/wink.png";
 import Work from "@/public/work.png";
-import Image from "next/image";
 import React from "react";
+import { AppImage } from "./app-image";
 
 export const TrustBadge: React.FC = () => {
   const avatars = [
@@ -28,11 +28,13 @@ export const TrustBadge: React.FC = () => {
             aria-label={avatar.alt}
             title={avatar.alt}
           >
-            <Image
-              src={avatar.src}
-              alt={avatar.alt}
-              className={"h-full w-full rounded-full object-cover"}
-            />
+            <div className="relative h-full w-full">
+              <AppImage
+                src={avatar.src}
+                alt={avatar.alt}
+                className={"h-full w-full rounded-full object-cover"}
+              />
+            </div>
           </div>
         ))}
       </div>
