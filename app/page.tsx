@@ -266,8 +266,8 @@ export default function Home() {
         </div>
       </section>
       {/* FAQ Section */}
-      <section className="mt-8 flex flex-col gap-y-8">
-        <span className="mb-2 w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+      <section className="mt-8 flex flex-col gap-y-4">
+        <span className="w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
           FAQ
         </span>
         <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -312,65 +312,76 @@ export default function Home() {
         </div>
       </section>
       {/* Blog Section */}
-      <section className="mt-8 flex flex-col gap-y-8">
-        <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+      <section className="mt-8 flex flex-col gap-y-4">
+        <span className="w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
           Blog
         </span>
         <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
           Latest Insights
         </h2>
         <ul className="divide-y divide-gray-100">
-          {[
-            {
-              id: 1,
-              title: "Why Transparency Matters in Software Projects",
-              excerpt:
-                "Explore how open communication and visibility lead to better outcomes for clients and teams.",
-              date: "2024-06-01",
-              author: "Kim Tran",
-              tag: "Transparency",
-            },
-            {
-              id: 2,
-              title: "Integrating with Your Existing Tools: A Guide",
-              excerpt:
-                "A practical look at how we connect with Slack, Notion, Jira, and more—no migration headaches.",
-              date: "2024-05-20",
-              author: "Alex P.",
-              tag: "Integration",
-            },
-            {
-              id: 3,
-              title: "Open Source: The Agency Advantage",
-              excerpt:
-                "Why building in the open benefits both our clients and the wider tech community.",
-              date: "2024-05-10",
-              author: "Jamie L.",
-              tag: "Open Source",
-            },
-          ].map((post) => (
-            <li key={post.id} className="group flex flex-col gap-2 py-7">
-              {post.tag && (
-                <span className="mb-1 w-fit rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
-                  {post.tag}
-                </span>
-              )}
-              <div className="mb-1 flex items-center gap-2">
-                <a
-                  href="#"
-                  className="text-xl font-bold text-gray-900 transition-colors hover:underline focus:underline"
-                >
-                  {post.title}
-                </a>
-              </div>
-              <p className="mb-1 max-w-2xl text-base font-light text-gray-700">
-                {post.excerpt}
-              </p>
-              <div className="font-mono text-xs tracking-tight text-gray-400">
-                {post.date} &middot; {post.author}
-              </div>
-            </li>
-          ))}
+          {(() => {
+            type Post = {
+              id: number;
+              title: string;
+              excerpt: string;
+              date: string;
+              author: string;
+              tag?: string;
+            };
+            const posts: Post[] = [];
+            // Uncomment and populate posts array to show articles
+            // posts.push({ id: 1, title: '...', excerpt: '...', date: '...', author: '...', tag: '...' });
+            if (posts.length === 0) {
+              return (
+                <li className="flex flex-col items-center justify-center py-16 text-center text-gray-400">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mx-auto mb-2 h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6v6l4 2"
+                    />
+                    <circle cx="12" cy="12" r="9" />
+                  </svg>
+                  <span className="text-base">
+                    No articles yet.
+                    <br />
+                    Check back soon for updates!
+                  </span>
+                </li>
+              );
+            }
+            return posts.map((post) => (
+              <li key={post.id} className="group flex flex-col gap-2 py-7">
+                {post.tag && (
+                  <span className="mb-1 w-fit rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
+                    {post.tag}
+                  </span>
+                )}
+                <div className="mb-1 flex items-center gap-2">
+                  <a
+                    href="#"
+                    className="text-xl font-bold text-gray-900 transition-colors hover:underline focus:underline"
+                  >
+                    {post.title}
+                  </a>
+                </div>
+                <p className="mb-1 max-w-2xl text-base font-light text-gray-700">
+                  {post.excerpt}
+                </p>
+                <div className="font-mono text-xs tracking-tight text-gray-400">
+                  {post.date} &middot; {post.author}
+                </div>
+              </li>
+            ));
+          })()}
         </ul>
       </section>
     </main>
