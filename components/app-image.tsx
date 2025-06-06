@@ -8,7 +8,7 @@ import { useState } from "react";
  * @see https://nextjs.org/docs/app/api-reference/components/image
  * @see https://github.com/vercel/next.js/discussions/26168#discussioncomment-1863742
  */
-export function AppImage({ alt, src, ...props }: ImageProps) {
+export function AppImage({ alt, className, src, ...props }: ImageProps) {
   const [isLoading, setLoading] = useState(true);
   return (
     <Image
@@ -18,6 +18,7 @@ export function AppImage({ alt, src, ...props }: ImageProps) {
         isLoading
           ? "scale-105 opacity-0 blur-md"
           : "blur-0 scale-100 opacity-100",
+        className,
       )}
       fill
       onLoad={() => setLoading(false)}
