@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ketryon.com
 
-## Getting Started
+A modern, open-source agency website built with transparency and efficiency at its core. ketryon.com showcases our commitment to open source, clear processes, and delivering exceptional software solutions for clients and the community.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Open Source by Default:** All code is public and auditable.
+- **Transparency:** Real-time project visibility and clear communication.
+- **Modern, Responsive UI:** Beautiful, accessible design with Tailwind CSS.
+- **Contact & Project Kickoff:** Easy project initiation and communication.
+- **Trust Badges & Social Proof:** Built-in credibility indicators.
+- **Calendar Integration:** Schedule meetings and demos seamlessly.
+- **Component-Based Architecture:** Clean, maintainable codebase.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+- **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS
+- **UI/UX:** Lucide Icons, Motion, Custom Fonts
+- **Calendar:** Cal.com Embed
+- **Analytics:** Vercel Analytics
+- **Tooling:** ESLint, Prettier, pnpm
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🖼️ Screenshots
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<!-- Add screenshots of the landing page, calendar integration, and UI components here -->
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Getting Started
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repo:**
+   ```sh
+   git clone https://github.com/your-org/ketryon.com.git
+   cd ketryon.com
+   ```
+2. **Install dependencies:**
+   ```sh
+   pnpm install
+   ```
+3. **Run the dev server:**
+   ```sh
+   pnpm dev
+   ```
+4. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting issues or pull requests.
+
+---
+
+## 📄 License
+
+This project is [MIT licensed](./LICENSE).
+
+---
+
+## 🙏 Acknowledgements
+
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Cal.com](https://cal.com/)
+- [Vercel](https://vercel.com/)
+- [Lucide Icons](https://lucide.dev/)
+
+---
+
+> Made with transparency and ❤️ by the ketryon.com team and community
