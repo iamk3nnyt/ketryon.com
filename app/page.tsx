@@ -6,7 +6,7 @@ import { TrustBadge } from "@/components/trust-badge";
 import { cn } from "@/lib/utils";
 import ArrowReverse from "@/public/arrow-reverse.svg";
 import Arrow from "@/public/arrow.svg";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Handlee } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -188,19 +188,34 @@ export default function Home() {
         </p>
         <ul className="mb-4 flex flex-col gap-2 text-base font-light text-gray-700">
           <li className="flex items-center gap-2">
-            <span>✔️</span> Custom Software Development
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-700">
+              <Check className="size-3" />
+            </span>
+            Custom Software Development
           </li>
           <li className="flex items-center gap-2">
-            <span>✔️</span> Product Design & Prototyping
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-700">
+              <Check className="size-3" />
+            </span>
+            Product Design & Prototyping
           </li>
           <li className="flex items-center gap-2">
-            <span>✔️</span> Technical Consulting
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-700">
+              <Check className="size-3" />
+            </span>
+            Technical Consulting
           </li>
           <li className="flex items-center gap-2">
-            <span>✔️</span> Open Source Solutions
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-700">
+              <Check className="size-3" />
+            </span>
+            Open Source Solutions
           </li>
           <li className="flex items-center gap-2">
-            <span>✔️</span> Ongoing Support & Maintenance
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-green-700">
+              <Check className="size-3" />
+            </span>
+            Ongoing Support & Maintenance
           </li>
         </ul>
         <div className="py-4">
