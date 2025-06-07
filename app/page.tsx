@@ -339,6 +339,16 @@ export default function Home() {
             for modern web technologies, they lead Ketryon with a focus on
             innovation and client success.
           </p>
+          <iframe
+            src="https://biohub.fyi/embed/kenny"
+            style={{
+              minHeight: "384px",
+              maxWidth: "320px",
+              width: "100%",
+            }}
+            title="Kenny's Profile Card"
+            className="md:hidden"
+          />
           {/* CTA for biohub.fyi */}
           <div className="mb-2">
             <span className="mb-1 block text-sm text-gray-600">
@@ -367,6 +377,7 @@ export default function Home() {
             width: "100%",
           }}
           title="Kenny's Profile Card"
+          className="hidden md:block"
         />
       </section>
       {/* FAQ Section */}
