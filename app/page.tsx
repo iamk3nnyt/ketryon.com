@@ -1,3 +1,5 @@
+"use client";
+
 import { Accordion } from "@/components/accordion";
 import { AppImage } from "@/components/app-image";
 import { Calendar } from "@/components/calendar";
@@ -6,10 +8,12 @@ import { TrustBadge } from "@/components/trust-badge";
 import { cn } from "@/lib/utils";
 import ArrowReverse from "@/public/arrow-reverse.svg";
 import Arrow from "@/public/arrow.svg";
+import type { BlogPost } from "@/types";
 import { ArrowRight, Check } from "lucide-react";
 import { Handlee } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const handlee = Handlee({ weight: ["400"], subsets: ["latin"] });
 
@@ -450,17 +454,47 @@ export default function Home() {
         </h2>
         <ul className="divide-y divide-gray-100">
           {(() => {
-            type Post = {
-              id: number;
-              title: string;
-              excerpt: string;
-              date: string;
-              author: string;
-              tag?: string;
-            };
-            const posts: Post[] = [];
-            // Uncomment and populate posts array to show articles
-            // posts.push({ id: 1, title: '...', excerpt: '...', date: '...', author: '...', tag: '...' });
+            const [posts, setPosts] = useState<BlogPost[]>([]);
+            const [loading, setLoading] = useState(true);
+            const [error, setError] = useState<string | null>(null);
+
+            useEffect(() => {
+              const fetchPosts = async () => {
+                try {
+                  const response = await fetch("/api/articles?limit=3");
+                  if (!response.ok) throw new Error("Failed to fetch posts");
+                  const data = await response.json();
+                  setPosts(data.articles);
+                } catch (err) {
+                  setError(
+                    err instanceof Error
+                      ? err.message
+                      : "Failed to fetch posts",
+                  );
+                } finally {
+                  setLoading(false);
+                }
+              };
+
+              fetchPosts();
+            }, []);
+
+            if (loading) {
+              return (
+                <li className="flex flex-col items-center justify-center py-16 text-center text-gray-400">
+                  <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-200 border-t-blue-600" />
+                </li>
+              );
+            }
+
+            if (error) {
+              return (
+                <li className="flex flex-col items-center justify-center py-16 text-center text-red-500">
+                  <span className="text-base">{error}</span>
+                </li>
+              );
+            }
+
             if (posts.length === 0) {
               return (
                 <li className="flex flex-col items-center justify-center py-16 text-center text-gray-400">
@@ -487,26 +521,38 @@ export default function Home() {
                 </li>
               );
             }
-            return posts.map((post) => (
-              <li key={post.id} className="group flex flex-col gap-2 py-7">
+
+            return posts.map((post, index) => (
+              <li
+                key={post.id}
+                className={cn(
+                  index ? "py-7" : "pb-7",
+                  "group flex flex-col gap-2",
+                )}
+              >
                 {post.tag && (
                   <span className="mb-1 w-fit rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
                     {post.tag}
                   </span>
                 )}
                 <div className="mb-1 flex items-center gap-2">
-                  <a
-                    href="#"
+                  <Link
+                    href={`/${post.slug}`}
                     className="text-xl font-bold text-gray-900 transition-colors hover:underline focus:underline"
                   >
                     {post.title}
-                  </a>
+                  </Link>
                 </div>
                 <p className="mb-1 max-w-2xl text-base font-light text-gray-700">
                   {post.excerpt}
                 </p>
                 <div className="font-mono text-xs tracking-tight text-gray-400">
-                  {post.date} &middot; {post.author}
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}{" "}
+                  &middot; {post.author.name}
                 </div>
               </li>
             ));
