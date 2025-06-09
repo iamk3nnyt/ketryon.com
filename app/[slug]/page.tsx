@@ -5,7 +5,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 async function getPost(slug: string): Promise<BlogPost> {
-  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
+  const res = await fetch(`${process.env.API_URL}/api/${slug}`, {
+    next: { revalidate: 60 }, // Revalidate every minute
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch blog post");
