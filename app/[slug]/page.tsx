@@ -43,30 +43,40 @@ export default async function BlogPostPage({
       {/* Header */}
       <header className="flex flex-col gap-y-4">
         {post.tag && (
-          <span className="w-fit rounded-full bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-700">
+          <span className="w-fit rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
             {post.tag}
           </span>
         )}
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+        <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
           {post.title}
         </h1>
-        <div className="flex items-center gap-x-4 text-sm text-gray-600">
+        <div className="flex flex-col gap-y-3">
+          {/* Author */}
           <div className="flex items-center gap-x-2">
-            <div className="relative size-6">
+            <div className="relative size-6 shrink-0">
               <AppImage
                 src={post.author.image}
                 alt={post.author.name}
                 className="h-full w-full rounded-full"
               />
             </div>
-            <span>{post.author.name}</span>
+            <span className="font-medium text-gray-900">
+              {post.author.name}
+            </span>
           </div>
-          <span>•</span>
-          <time dateTime={post.date}>{post.date}</time>
-          <span>•</span>
-          <div className="flex items-center gap-x-1">
-            <Clock className="h-4 w-4" />
-            <span>{post.readTime}</span>
+          {/* Meta */}
+          <div className="flex flex-wrap items-center gap-x-3 text-sm text-gray-600">
+            <time dateTime={post.date} className="whitespace-nowrap">
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            <div className="flex items-center gap-x-1">
+              <Clock className="h-4 w-4 shrink-0" />
+              <span>{post.readTime}</span>
+            </div>
           </div>
         </div>
       </header>
