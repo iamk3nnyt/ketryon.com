@@ -405,7 +405,7 @@ export default function Home() {
       </section>
       {/* Founder Section */}
       <section className="flex flex-col gap-y-6 md:flex-row md:items-center md:gap-x-12">
-        <div className="flex flex-1 flex-col gap-y-4">
+        <div className="flex flex-1 flex-col gap-y-6">
           <span className="mb-2 w-fit rounded-md bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700">
             Meet the Founder
           </span>
@@ -429,7 +429,7 @@ export default function Home() {
             className="md:hidden"
           />
           {/* CTA for biohub.fyi */}
-          <div className="mb-2">
+          <div>
             <span className="mb-1 block text-sm text-gray-600">
               Want to build your own digital identity? <b>biohub.fyi</b> is our
               open-source platform for creating beautiful, customizable profile
@@ -461,7 +461,7 @@ export default function Home() {
       </section>
       {/* FAQ Section */}
       <section className="flex flex-col gap-y-6">
-        <span className="w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+        <span className="mb-2 w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
           FAQ
         </span>
         <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -506,7 +506,7 @@ export default function Home() {
       </section>
       {/* Blog Section */}
       <section className="flex flex-col gap-y-6">
-        <span className="w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+        <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
           Blog
         </span>
         <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
