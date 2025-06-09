@@ -50,7 +50,7 @@ export default async function BlogPostPage({
         <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
           {post.title}
         </h1>
-        <div className="flex flex-col gap-y-3">
+        <div className="flex flex-col gap-y-3 sm:flex-row sm:items-center sm:gap-x-4">
           {/* Author */}
           <div className="flex items-center gap-x-2">
             <div className="relative size-6 shrink-0">
