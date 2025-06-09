@@ -234,11 +234,61 @@ export default function Home() {
             Transparency Benefits Everyone
           </h3>
           <p className="max-w-2xl text-gray-600">
-            When you can see how your project is built, you gain peace of mind
-            and the freedom to innovate. Our open approach ensures you&apos;re
-            always in the loop, and the community benefits from shared knowledge
-            and continuous improvement.
+            We keep you in the loop at every step. Here's what a typical
+            conversation looks like between you and our team.
           </p>
+        </div>
+      </section>
+      {/* Chat Interaction Section - mid-project, 4 bubbles */}
+      <section className="mb-16">
+        <div className="flex flex-col gap-y-12 sm:gap-y-6">
+          {/* Client message 1 */}
+          <div className="flex w-full items-start gap-3">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="Client"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div className="max-w-[70%] rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+              Hi team! The homepage draft looks great. Could we try a different
+              accent color for the call-to-action button?
+            </div>
+          </div>
+          {/* Team message 2 */}
+          <div className="flex w-full flex-row-reverse items-start gap-3 self-end">
+            <img
+              src="https://randomuser.me/api/portraits/men/65.jpg"
+              alt="Team"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div className="max-w-[70%] rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+              Absolutely! We'll send over a few color options by tomorrow.
+            </div>
+          </div>
+          {/* Client message 3 */}
+          <div className="flex w-full items-start gap-3">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="Client"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div className="max-w-[70%] rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+              Thanks! Also, can you clarify the timeline for the blog
+              integration?
+            </div>
+          </div>
+          {/* Team message 4 */}
+          <div className="flex w-full flex-row-reverse items-start gap-3 self-end">
+            <img
+              src="https://randomuser.me/api/portraits/men/65.jpg"
+              alt="Team"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div className="max-w-[70%] rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+              Of course! We're on track to deliver the blog feature by next
+              Friday.
+            </div>
+          </div>
         </div>
       </section>
       {/* Services & Products Section */}
