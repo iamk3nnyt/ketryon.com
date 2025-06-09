@@ -50,6 +50,66 @@ export default function Home() {
   return (
     <main className="relative mx-auto flex w-full max-w-5xl flex-col gap-y-12 px-4 py-16">
       <Header />
+      {/* Our Process Section - moved up for prominence */}
+      <section className="mb-16 flex flex-col gap-y-6">
+        <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+          Our Process
+        </span>
+        <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+          Effortless Process, Continuous Delivery
+        </h2>
+        <p className="max-w-xl text-base text-gray-700">
+          Our process is designed for clarity, speed, and quality. Here's how we
+          take your project from idea to launch and beyond.
+        </p>
+        <div className="mb-2 overflow-x-auto">
+          <div className="flex min-w-[700px] gap-6 sm:min-w-full">
+            {[
+              {
+                title: "Discovery",
+                desc: "We learn about your goals, challenges, and vision to set a strong foundation.",
+              },
+              {
+                title: "Planning",
+                desc: "We define the roadmap, deliverables, and timelines for a clear project path.",
+              },
+              {
+                title: "Design",
+                desc: "We craft beautiful, user-centric interfaces and experiences.",
+              },
+              {
+                title: "Development",
+                desc: "We build robust, scalable solutions using modern technologies.",
+              },
+              {
+                title: "Launch",
+                desc: "We deploy, test, and ensure a smooth go-live for your product.",
+              },
+              {
+                title: "Support",
+                desc: "We provide ongoing support, updates, and improvements.",
+              },
+            ].map((step, idx) => (
+              <div
+                key={step.title}
+                className="flex h-64 w-64 flex-shrink-0 flex-col justify-between rounded-2xl bg-blue-50 px-6 py-8"
+              >
+                <div>
+                  <div className="mb-1 text-lg font-semibold text-blue-600">
+                    {String(idx + 1).padStart(2, "0")}.
+                  </div>
+                  <div className="mb-3 text-xl font-bold text-gray-900">
+                    {step.title}
+                  </div>
+                  <div className="text-sm leading-relaxed text-gray-700">
+                    {step.desc}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <div className="relative">
         <div className="absolute right-0 bottom-16 z-20">
           <span
@@ -66,7 +126,7 @@ export default function Home() {
       </div>
       <Calendar />
       {/* How We Stay Up-to-Date Section (was: webarc.day Product Spotlight) */}
-      <section className="mt-12 flex flex-col gap-y-6">
+      <section className="flex flex-col gap-y-6">
         <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
           How We Stay Current
         </span>
@@ -124,7 +184,7 @@ export default function Home() {
         </div>
       </section>
       {/* Open Source & Transparency Section */}
-      <section className="flex flex-col gap-y-4">
+      <section className="flex flex-col gap-y-6">
         <span className="mb-2 w-fit rounded-md bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
           Open Source & Transparency
         </span>
@@ -182,7 +242,7 @@ export default function Home() {
         </div>
       </section>
       {/* Services & Products Section */}
-      <section className="flex flex-col gap-y-8">
+      <section className="flex flex-col gap-y-6">
         <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
           Services & Products That Drive Results
         </h2>
@@ -252,7 +312,7 @@ export default function Home() {
         </div>
       </section>
       {/* Platform Flexibility Section */}
-      <section className="mt-8 flex flex-col gap-y-8">
+      <section className="flex flex-col gap-y-6">
         <span className="mb-2 w-fit rounded-md bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">
           Platform Flexibility
         </span>
@@ -344,7 +404,7 @@ export default function Home() {
         </div>
       </section>
       {/* Founder Section */}
-      <section className="mt-12 flex flex-col gap-y-8 md:flex-row md:items-center md:gap-x-12">
+      <section className="flex flex-col gap-y-6 md:flex-row md:items-center md:gap-x-12">
         <div className="flex flex-1 flex-col gap-y-4">
           <span className="mb-2 w-fit rounded-md bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700">
             Meet the Founder
@@ -400,7 +460,7 @@ export default function Home() {
         />
       </section>
       {/* FAQ Section */}
-      <section className="mt-8 flex flex-col gap-y-8">
+      <section className="flex flex-col gap-y-6">
         <span className="w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
           FAQ
         </span>
@@ -445,7 +505,7 @@ export default function Home() {
         </div>
       </section>
       {/* Blog Section */}
-      <section className="mt-8 flex flex-col gap-y-8">
+      <section className="flex flex-col gap-y-6">
         <span className="w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
           Blog
         </span>
