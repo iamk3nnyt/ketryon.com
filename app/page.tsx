@@ -249,7 +249,7 @@ export default function Home() {
               alt="Client"
               className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
             />
-            <div className="max-w-[70%] rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+            <div className="rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
               Hi team! The homepage draft looks great. Could we try a different
               accent color for the call-to-action button?
             </div>
@@ -261,7 +261,7 @@ export default function Home() {
               alt="Team"
               className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
             />
-            <div className="max-w-[70%] rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+            <div className="rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
               Absolutely! We'll send over a few color options by tomorrow.
             </div>
           </div>
@@ -272,7 +272,7 @@ export default function Home() {
               alt="Client"
               className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
             />
-            <div className="max-w-[70%] rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+            <div className="rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
               Thanks! Also, can you clarify the timeline for the blog
               integration?
             </div>
@@ -284,7 +284,7 @@ export default function Home() {
               alt="Team"
               className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
             />
-            <div className="max-w-[70%] rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
+            <div className="rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
               Of course! We're on track to deliver the blog feature by next
               Friday.
             </div>
