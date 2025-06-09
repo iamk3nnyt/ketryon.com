@@ -5,7 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 async function getPost(slug: string): Promise<BlogPost> {
-  const res = await fetch(`${process.env.API_URL}/api/${slug}`, {
+  const res = await fetch(`${process.env.API_URL}/api/blog/${slug}`, {
     next: { revalidate: 60 }, // Revalidate every minute
   });
 
