@@ -239,52 +239,83 @@ export default function Home() {
           </p>
         </div>
       </section>
-      {/* Chat Interaction Section - mid-project, 4 bubbles */}
-      <section className="flex flex-col gap-y-12 sm:gap-y-6">
-        {/* Client message 1 */}
-        <div className="flex w-full items-start gap-3">
-          <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="Client"
-            className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
-          />
-          <div className="rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
-            Hi team! The homepage draft looks great. Could we try a different
-            accent color for the call-to-action button?
+      {/* Chat Interaction Section - client is 'You', agency is 'We' */}
+      <section className="mb-16 w-full rounded-2xl bg-gray-50 px-4 py-10">
+        <div className="flex flex-col gap-y-8">
+          {/* You (client) message 1 */}
+          <div className="flex w-full flex-row-reverse items-start gap-3">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="You"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div className="flex flex-col items-end">
+              <div className="mb-1 flex items-center gap-2">
+                <span className="text-xs text-gray-400">10:02 AM</span>
+                <span className="text-sm font-semibold text-gray-900">You</span>
+              </div>
+              <div className="max-w-[90vw] rounded-xl bg-blue-600 px-5 py-3 text-white shadow sm:max-w-[60%]">
+                Hi! The homepage draft looks great. Could we try a different
+                accent color for the call-to-action button?
+              </div>
+            </div>
           </div>
-        </div>
-        {/* Team message 2 */}
-        <div className="flex w-full flex-row-reverse items-start gap-3 self-end">
-          <img
-            src="https://randomuser.me/api/portraits/men/65.jpg"
-            alt="Team"
-            className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
-          />
-          <div className="rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
-            Absolutely! We'll send over a few color options by tomorrow.
+          {/* We (agency) message 2 */}
+          <div className="flex w-full items-start gap-3">
+            <img
+              src="https://randomuser.me/api/portraits/men/65.jpg"
+              alt="We"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div>
+              <div className="mb-1 flex items-center gap-2">
+                <span className="text-sm font-semibold text-gray-900">
+                  Ketryon
+                </span>
+                <span className="text-xs text-gray-400">10:03 AM</span>
+              </div>
+              <div className="max-w-[90vw] rounded-xl bg-white px-5 py-3 text-gray-900 shadow sm:max-w-[60%]">
+                Absolutely! We'll send over a few color options by tomorrow.
+              </div>
+            </div>
           </div>
-        </div>
-        {/* Client message 3 */}
-        <div className="flex w-full items-start gap-3">
-          <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="Client"
-            className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
-          />
-          <div className="rounded-2xl bg-blue-50 px-5 py-3 text-gray-900 sm:max-w-[40%]">
-            Thanks! Also, can you clarify the timeline for the blog integration?
+          {/* You (client) message 3 */}
+          <div className="flex w-full flex-row-reverse items-start gap-3">
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="You"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div className="flex flex-col items-end">
+              <div className="mb-1 flex items-center gap-2">
+                <span className="text-xs text-gray-400">10:04 AM</span>
+                <span className="text-sm font-semibold text-gray-900">You</span>
+              </div>
+              <div className="max-w-[90vw] rounded-xl bg-blue-600 px-5 py-3 text-white shadow sm:max-w-[60%]">
+                Thanks! Also, can you clarify the timeline for the blog
+                integration?
+              </div>
+            </div>
           </div>
-        </div>
-        {/* Team message 4 */}
-        <div className="flex w-full flex-row-reverse items-start gap-3 self-end">
-          <img
-            src="https://randomuser.me/api/portraits/men/65.jpg"
-            alt="Team"
-            className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
-          />
-          <div className="rounded-2xl bg-blue-100 px-5 py-3 text-gray-900 sm:max-w-[40%]">
-            Of course! We're on track to deliver the blog feature by next
-            Friday.
+          {/* We (agency) message 4 */}
+          <div className="flex w-full items-start gap-3">
+            <img
+              src="https://randomuser.me/api/portraits/men/65.jpg"
+              alt="We"
+              className="h-9 w-9 rounded-full border-2 border-white bg-blue-200"
+            />
+            <div>
+              <div className="mb-1 flex items-center gap-2">
+                <span className="text-sm font-semibold text-gray-900">
+                  Ketryon
+                </span>
+                <span className="text-xs text-gray-400">10:05 AM</span>
+              </div>
+              <div className="max-w-[90vw] rounded-xl bg-white px-5 py-3 text-gray-900 shadow sm:max-w-[60%]">
+                Of course! We're on track to deliver the blog feature by next
+                Friday.
+              </div>
+            </div>
           </div>
         </div>
       </section>
