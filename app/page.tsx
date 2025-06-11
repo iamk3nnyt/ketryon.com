@@ -481,62 +481,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* Founder Section */}
-      <section className="flex flex-col gap-y-6 md:flex-row md:items-center md:gap-x-12">
-        <div className="flex flex-1 flex-col gap-y-6">
-          <span className="mb-2 w-fit rounded-md bg-pink-100 px-3 py-1 text-xs font-semibold text-pink-700">
-            Meet the Founder
-          </span>
-          <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-            Get to know the person behind Ketryon
-          </h2>
-          <p className="max-w-md text-base font-light text-gray-700">
-            Our founder is passionate about building transparent, efficient, and
-            impactful software. With a vision for open collaboration and a love
-            for modern web technologies, they lead Ketryon with a focus on
-            innovation and client success.
-          </p>
-          <iframe
-            src="https://biohub.fyi/embed/kenny"
-            style={{
-              minHeight: "384px",
-              maxWidth: "320px",
-              width: "100%",
-            }}
-            title="Kenny's Profile Card"
-            className="md:hidden"
-          />
-          {/* CTA for biohub.fyi */}
-          <div>
-            <span className="mb-1 block text-sm text-gray-600">
-              Want to build your own digital identity? <b>biohub.fyi</b> is our
-              open-source platform for creating beautiful, customizable profile
-              pages—just like the one you see here. Join a growing community of
-              makers, founders, and creators.
-            </span>
-            <a
-              href="https://biohub.fyi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 rounded text-sm font-medium text-pink-700 underline underline-offset-2 transition hover:text-pink-900 focus:ring-2 focus:ring-pink-200 focus:outline-none"
-              aria-label="Create your own digital identity with biohub.fyi (opens in a new tab)"
-            >
-              Create your free profile on biohub.fyi
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-        <iframe
-          src="https://biohub.fyi/embed/kenny"
-          style={{
-            minHeight: "384px",
-            maxWidth: "320px",
-            width: "100%",
-          }}
-          title="Kenny's Profile Card"
-          className="hidden md:block"
-        />
-      </section>
       {/* FAQ Section */}
       <section className="flex flex-col gap-y-6">
         <span className="mb-2 w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
