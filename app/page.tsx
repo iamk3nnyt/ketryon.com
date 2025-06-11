@@ -6,7 +6,6 @@ import { Calendar } from "@/components/calendar";
 import { Marquee } from "@/components/marquee";
 import { TrustBadge } from "@/components/trust-badge";
 import { cn } from "@/lib/utils";
-import ArrowReverse from "@/public/arrow-reverse.svg";
 import Arrow from "@/public/arrow.svg";
 import type { BlogPost } from "@/types";
 import { ArrowRight, Check } from "lucide-react";
@@ -125,64 +124,6 @@ export default function Home() {
         <Marquee />
       </div>
       <Calendar />
-      {/* How We Stay Up-to-Date Section (was: webarc.day Product Spotlight) */}
-      <section className="flex flex-col gap-y-6">
-        <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
-          How We Stay Current
-        </span>
-        <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-          We keep up with modern web technologies—by curating them ourselves
-        </h2>
-        <p className="max-w-2xl text-base text-gray-700">
-          <span className="font-light">
-            Our team tracks the latest frameworks, tools, and best practices
-            using our own open-source curation platform,
-          </span>{" "}
-          <b>webarc.day</b>
-          <span className="font-light">
-            . Every day, we review and share the most important news, tutorials,
-            and trends in web development—so our clients always benefit from the
-            cutting edge.
-          </span>
-        </p>
-        <div className="mb-2">
-          <a
-            href="https://webarc.day"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 rounded text-sm font-medium text-blue-700 underline underline-offset-2 transition hover:text-blue-900 focus:ring-2 focus:ring-blue-200 focus:outline-none"
-            aria-label="Visit webarc.day (opens in a new tab)"
-          >
-            Visit webarc.day
-            <ArrowRight className="h-4 w-4" />
-          </a>
-        </div>
-        <div className="relative overflow-hidden">
-          <div className="absolute left-0 z-20 hidden sm:top-[20%] sm:block lg:top-[30%]">
-            <span
-              className={cn(
-                "block rotate-12 tracking-tighter",
-                handlee.className,
-              )}
-            >
-              Real-time analytics
-            </span>
-            <Image
-              alt="arrow-reverse"
-              src={ArrowReverse}
-              className="w-16 rotate-360"
-            />
-          </div>
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-white via-transparent via-40% to-transparent" />
-          <div className="relative -ml-[25%] aspect-video w-[150%] rounded-xl">
-            <AppImage
-              src="/webarc-day-og.png"
-              alt="Screenshot of webarc.day news aggregation platform"
-              className="h-full w-full rounded-xl object-cover"
-            />
-          </div>
-        </div>
-      </section>
       {/* Open Source & Transparency Section */}
       <section className="flex flex-col gap-y-6">
         <span className="mb-2 w-fit rounded-md bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
