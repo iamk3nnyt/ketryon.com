@@ -102,6 +102,12 @@ export default function RootLayout({
             gtag('set', 'url_passthrough', true);
           `}
         </Script>
+        <Script
+          id="CookieConsent"
+          src="https://policy.app.cookieinformation.com/uc.js"
+          data-culture="SV"
+          data-gcm-version="2.0"
+        />
         {/* Google Tag Manager (only in production) */}
         {process.env.NODE_ENV === "production" && (
           <Script
