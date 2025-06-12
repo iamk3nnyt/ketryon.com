@@ -105,7 +105,7 @@ export default function RootLayout({
         <Script
           id="CookieConsent"
           src="https://policy.app.cookieinformation.com/uc.js"
-          data-culture="SV"
+          data-culture="EN"
           data-gcm-version="2.0"
         />
         {/* Google Tag Manager (only in production) */}
