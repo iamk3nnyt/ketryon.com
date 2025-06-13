@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "./",
     languages: {
-      "en-US": "https://www.ketryon.com",
+      "en-US": BASE_URL,
     },
   },
   openGraph: {
@@ -130,17 +130,12 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Ketryon",
-              url: "https://www.ketryon.com",
-              logo: "https://www.ketryon.com/logo.png",
-              sameAs: [
-                "https://twitter.com/ktranish",
-                "https://github.com/ktranish",
-                "https://linkedin.com/in/ktranish",
-              ],
+              url: BASE_URL,
+              logo: BASE_URL + "/logo.png",
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "customer service",
-                email: "contact@ketryon.com",
+                email: "kenny@ketryon.com",
                 availableLanguage: ["English"],
               },
             }),
