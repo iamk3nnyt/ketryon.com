@@ -1,4 +1,5 @@
-export const BASE_URL = "https://www.ketryon.com"; 
+export const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://www.ketryon.com";
 
 export const icons = [
   {
