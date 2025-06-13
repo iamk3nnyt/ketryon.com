@@ -1,8 +1,7 @@
 import client from "@/lib/mongodb";
-import type { BlogPost } from "@/types/blog";
 import { NextResponse } from "next/server";
 
-const samplePosts: BlogPost[] = [
+const samplePosts = [
   {
     id: "1",
     slug: "building-transparent-software",

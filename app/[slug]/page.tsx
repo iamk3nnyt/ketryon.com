@@ -1,10 +1,10 @@
 import { AppImage } from "@/components/app-image";
-import type { BlogPost } from "@/types/blog";
+import type { Article } from "@/types/blog";
 import { ArrowLeft, Clock } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-async function getPost(slug: string): Promise<BlogPost> {
+async function getPost(slug: string): Promise<Article> {
   const res = await fetch(`${process.env.API_URL}/api/blog/${slug}`, {
     next: { revalidate: 60 }, // Revalidate every minute
   });
@@ -22,7 +22,7 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  let post: BlogPost;
+  let post: Article;
   try {
     post = await getPost(slug);
   } catch (error) {

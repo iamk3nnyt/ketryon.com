@@ -7,7 +7,7 @@ import { Marquee } from "@/components/marquee";
 import { TrustBadge } from "@/components/trust-badge";
 import { cn } from "@/lib/utils";
 import Arrow from "@/public/arrow.svg";
-import type { BlogPost } from "@/types/blog";
+import type { Article } from "@/types/blog";
 import { ArrowRight, Check } from "lucide-react";
 import { Handlee } from "next/font/google";
 import Image from "next/image";
@@ -477,7 +477,7 @@ export default function Home() {
         </h2>
         <ul className="divide-y divide-gray-100">
           {(() => {
-            const [posts, setPosts] = useState<BlogPost[]>([]);
+            const [posts, setPosts] = useState<Article[]>([]);
             const [loading, setLoading] = useState(true);
             const [error, setError] = useState<string | null>(null);
 
