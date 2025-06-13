@@ -273,8 +273,6 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
     },
   );
 
-  console.log(currentArticle);
-
   if (!currentArticle) return [];
 
   // If the article has explicitly defined related articles, use those
