@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
-export default function BlogPostNotFound() {
+export default function NotFound() {
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col items-center justify-center gap-y-4 px-4 py-16 text-center">
       <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
