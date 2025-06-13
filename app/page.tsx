@@ -3,13 +3,13 @@ import { AppImage } from "@/components/app-image";
 import { Calendar } from "@/components/calendar";
 import { Marquee } from "@/components/marquee";
 import { TrustBadge } from "@/components/trust-badge";
+import { getArticles } from "@/lib/data/blog";
 import { cn } from "@/lib/utils";
 import Arrow from "@/public/arrow.svg";
 import { ArrowRight, Check } from "lucide-react";
 import { Handlee } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import { Blog } from "./components";
 
 const handlee = Handlee({ weight: ["400"], subsets: ["latin"] });
 
@@ -490,6 +490,77 @@ function Faq() {
           ]}
         />
       </div>
+    </section>
+  );
+}
+
+async function Blog() {
+  const posts = await getArticles();
+
+  if (posts.length === 0) {
+    return (
+      <li className="flex flex-col items-center justify-center py-16 text-center text-gray-400">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="mx-auto mb-2 h-8 w-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2" />
+          <circle cx="12" cy="12" r="9" />
+        </svg>
+        <span className="text-base">
+          No articles yet.
+          <br />
+          Check back soon for updates!
+        </span>
+      </li>
+    );
+  }
+
+  return (
+    <section className="flex flex-col gap-y-6">
+      <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+        Blog
+      </span>
+      <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+        Latest Insights
+      </h2>
+      <ul className="divide-y divide-gray-100">
+        {posts.map((post, index) => (
+          <li
+            key={post.id}
+            className={cn(index ? "py-7" : "pb-7", "group flex flex-col gap-2")}
+          >
+            {post.tag && (
+              <span className="mb-1 w-fit rounded-full bg-blue-50 px-2 py-0.5 text-[11px] font-medium text-blue-700">
+                {post.tag}
+              </span>
+            )}
+            <div className="mb-1 flex items-center gap-2">
+              <Link
+                href={`/${post.slug}`}
+                className="text-xl font-bold text-gray-900 transition-colors hover:underline focus:underline"
+              >
+                {post.title}
+              </Link>
+            </div>
+            <p className="mb-1 max-w-2xl text-base font-light text-gray-700">
+              {post.excerpt}
+            </p>
+            <div className="font-mono text-xs tracking-tight text-gray-400">
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}{" "}
+              &middot; {post.author.name}
+            </div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
