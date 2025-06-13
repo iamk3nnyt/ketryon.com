@@ -13,7 +13,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="flex flex-col items-center justify-center py-16 text-center text-red-500">
+    <main className="flex h-screen flex-col items-center justify-center py-16 text-center text-red-500">
       <span className="text-base">
         {error.message || "An unexpected error occurred"}
       </span>

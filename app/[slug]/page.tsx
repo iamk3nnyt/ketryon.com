@@ -1,33 +1,24 @@
 import { AppImage } from "@/components/app-image";
-import type { Article } from "@/types/blog";
+import { BASE_URL } from "@/constants";
+import { getArticleBySlug } from "@/lib/data/blog";
 import { ArrowLeft, Clock } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-async function getPost(slug: string): Promise<Article> {
-  const res = await fetch(`${process.env.API_URL}/api/blog/${slug}`, {
-    next: { revalidate: 60 }, // Revalidate every minute
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch blog post");
-  }
-
-  return res.json();
+async function getArticle(slug: string) {
+  const article = await getArticleBySlug(slug);
+  return article;
 }
 
-export default async function BlogPostPage({
+export default async function BlogArticlePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-  let post: Article;
-  try {
-    post = await getPost(slug);
-  } catch (error) {
-    notFound();
-  }
+
+  const article = await getArticle(slug);
+  if (!article) return notFound();
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-col gap-y-8 px-4 py-16">
@@ -42,32 +33,32 @@ export default async function BlogPostPage({
 
       {/* Header */}
       <header className="flex flex-col gap-y-4">
-        {post.tag && (
+        {article.tag && (
           <span className="w-fit rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
-            {post.tag}
+            {article.tag}
           </span>
         )}
         <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
-          {post.title}
+          {article.title}
         </h1>
         <div className="flex flex-col gap-y-3 sm:flex-row sm:items-center sm:gap-x-4">
           {/* Author */}
           <div className="flex items-center gap-x-2">
             <div className="relative size-6 shrink-0">
               <AppImage
-                src={post.author.image}
-                alt={post.author.name}
+                src={article.author.image}
+                alt={article.author.name}
                 className="h-full w-full rounded-full"
               />
             </div>
             <span className="font-medium text-gray-900">
-              {post.author.name}
+              {article.author.name}
             </span>
           </div>
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-x-3 text-sm text-gray-600">
-            <time dateTime={post.date} className="whitespace-nowrap">
-              {new Date(post.date).toLocaleDateString("en-US", {
+            <time dateTime={article.date} className="whitespace-nowrap">
+              {new Date(article.date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
@@ -75,18 +66,18 @@ export default async function BlogPostPage({
             </time>
             <div className="flex items-center gap-x-1">
               <Clock className="h-4 w-4 shrink-0" />
-              <span>{post.readTime}</span>
+              <span>{article.readTime}</span>
             </div>
           </div>
         </div>
       </header>
 
       {/* Featured Image */}
-      {post.image && (
+      {article.image && (
         <div className="relative aspect-video overflow-hidden rounded-xl">
           <AppImage
-            src={post.image}
-            alt={post.title}
+            src={article.image}
+            alt={article.title}
             className="object-cover"
             priority
           />
@@ -95,29 +86,29 @@ export default async function BlogPostPage({
 
       {/* Content */}
       <article className="prose prose-gray max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div dangerouslySetInnerHTML={{ __html: article.content }} />
       </article>
 
       {/* Author Bio */}
       <div className="flex items-start gap-4 rounded-lg border border-gray-100 bg-gray-50/50 p-6">
         <div className="relative size-12 shrink-0">
           <AppImage
-            src={post.author.image}
-            alt={post.author.name}
+            src={article.author.image}
+            alt={article.author.name}
             className="h-full w-full rounded-full"
           />
         </div>
         <div>
-          <h3 className="font-semibold text-gray-900">{post.author.name}</h3>
+          <h3 className="font-semibold text-gray-900">{article.author.name}</h3>
           <p className="mt-1 text-sm text-gray-600">
-            {post.author.bio ||
+            {article.author.bio ||
               "Writer and developer passionate about building transparent software."}
           </p>
         </div>
       </div>
 
       {/* Related Articles */}
-      <div>
+      {/*<div>
         <h2 className="mb-6 text-2xl font-bold">Related Articles</h2>
         <div className="grid gap-6 sm:grid-cols-2">
           {post.related?.map((article) => (
@@ -136,7 +127,7 @@ export default async function BlogPostPage({
             </Link>
           ))}
         </div>
-      </div>
+      </div>*/}
 
       {/* Social Share */}
       <div className="flex items-center gap-4">
@@ -145,7 +136,7 @@ export default async function BlogPostPage({
         </span>
         <div className="flex gap-2">
           <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://ketryon.com/${post.slug}`)}`}
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(`${BASE_URL}/${article.slug}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-gray-100 p-2 text-gray-600 transition-colors hover:bg-gray-200"
@@ -155,7 +146,7 @@ export default async function BlogPostPage({
             </svg>
           </a>
           <a
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://ketryon.com/${post.slug}`)}`}
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${BASE_URL}/${article.slug}`)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-gray-100 p-2 text-gray-600 transition-colors hover:bg-gray-200"
