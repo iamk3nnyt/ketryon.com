@@ -131,7 +131,6 @@ export async function seedArticles() {
 
   const seed = [
     {
-      id: "1",
       slug: "building-transparent-software",
       title:
         "Building Transparent Software: A Guide to Open Source Development",
@@ -159,6 +158,7 @@ export async function seedArticles() {
       author: {
         name: "Kenny Tran",
         image: "/avatar.png",
+        bio: "Writer and developer passionate about building transparent software.",
       },
       tag: "Development",
       readTime: "5 min read",
@@ -167,7 +167,6 @@ export async function seedArticles() {
       related: ["modern-web-development", "efficient-workflows"],
     },
     {
-      id: "2",
       slug: "modern-web-development",
       title: "Modern Web Development: Trends and Best Practices",
       excerpt:
@@ -200,6 +199,7 @@ export async function seedArticles() {
       author: {
         name: "Kenny Tran",
         image: "/avatar.png",
+        bio: "Writer and developer passionate about building transparent software.",
       },
       tag: "Web Development",
       readTime: "7 min read",
@@ -208,7 +208,6 @@ export async function seedArticles() {
       related: ["building-transparent-software", "efficient-workflows"],
     },
     {
-      id: "3",
       slug: "efficient-workflows",
       title: "Creating Efficient Development Workflows",
       excerpt:
@@ -241,6 +240,7 @@ export async function seedArticles() {
       author: {
         name: "Kenny Tran",
         image: "/avatar.png",
+        bio: "Writer and developer passionate about building transparent software.",
       },
       tag: "Workflow",
       readTime: "6 min read",

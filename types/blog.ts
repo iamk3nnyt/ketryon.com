@@ -1,7 +1,6 @@
 import { BaseDocument } from "@/lib/db/types";
 
 export interface Article extends BaseDocument {
-  id: string;
   slug: string;
   title: string;
   excerpt: string;
@@ -10,7 +9,7 @@ export interface Article extends BaseDocument {
   author: {
     name: string;
     image: string;
-    bio?: string;
+    bio: string;
   };
   tag: string;
   readTime: string;
