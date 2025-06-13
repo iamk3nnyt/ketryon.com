@@ -14,5 +14,5 @@ export interface Article extends BaseDocument {
   tag: string;
   readTime: string;
   image: string;
-  related?: string[];
+  related: string[];
 }
