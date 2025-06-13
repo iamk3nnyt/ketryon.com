@@ -1,6 +1,6 @@
 # ketryon.com
 
-A modern, open-source agency website built with transparency and efficiency at its core. ketryon.com showcases our commitment to open source, clear processes, and delivering exceptional software solutions for clients and the community.
+A modern, open-source agency website built with Next.js 15+ and TypeScript.
 
 ---
 
