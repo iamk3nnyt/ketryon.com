@@ -5,11 +5,6 @@ import { ArrowLeft, Clock } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-async function getArticle(slug: string) {
-  const article = await getArticleBySlug(slug);
-  return article;
-}
-
 export default async function BlogArticlePage({
   params,
 }: {
@@ -17,7 +12,7 @@ export default async function BlogArticlePage({
 }) {
   const slug = (await params).slug;
 
-  const article = await getArticle(slug);
+  const article = await getArticleBySlug(slug);
   const relatedArticles = await getRelatedArticles(slug);
 
   if (!article) return notFound();
