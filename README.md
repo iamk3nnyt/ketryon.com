@@ -4,6 +4,12 @@ A modern, open-source agency website built with Next.js 15+ and TypeScript.
 
 ---
 
+## 🖼️ Screenshots
+
+<!-- Add screenshots of the landing page, calendar integration, and UI components here -->
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS
@@ -12,12 +18,6 @@ A modern, open-source agency website built with Next.js 15+ and TypeScript.
 - **Analytics:** Vercel Analytics
 - **SEO:** Next.js Metadata API, Open Graph, Twitter Card, JSON-LD
 - **Tooling:** ESLint, Prettier, pnpm
-
----
-
-## 🖼️ Screenshots
-
-<!-- Add screenshots of the landing page, calendar integration, and UI components here -->
 
 ---
 
