@@ -1,6 +1,6 @@
 import { AppImage } from "@/components/app-image";
 import { BASE_URL } from "@/constants";
-import { getArticleBySlug } from "@/lib/data/blog";
+import { getArticleBySlug, getRelatedArticles } from "@/lib/data/blog";
 import { ArrowLeft, Clock } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -18,6 +18,8 @@ export default async function BlogArticlePage({
   const slug = (await params).slug;
 
   const article = await getArticle(slug);
+  const relatedArticles = await getRelatedArticles(slug);
+
   if (!article) return notFound();
 
   return (
@@ -108,10 +110,10 @@ export default async function BlogArticlePage({
       </div>
 
       {/* Related Articles */}
-      {/*<div>
+      <div>
         <h2 className="mb-6 text-2xl font-bold">Related Articles</h2>
         <div className="grid gap-6 sm:grid-cols-2">
-          {post.related?.map((article) => (
+          {relatedArticles.map((article) => (
             <Link
               key={article.id}
               href={`/${article.slug}`}
@@ -127,7 +129,7 @@ export default async function BlogArticlePage({
             </Link>
           ))}
         </div>
-      </div>*/}
+      </div>
 
       {/* Social Share */}
       <div className="flex items-center gap-4">

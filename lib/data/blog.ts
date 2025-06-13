@@ -164,6 +164,7 @@ export async function seedArticles() {
       readTime: "5 min read",
       image:
         "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=3540&auto=format&fit=crop",
+      related: ["modern-web-development", "efficient-workflows"],
     },
     {
       id: "2",
@@ -204,6 +205,7 @@ export async function seedArticles() {
       readTime: "7 min read",
       image:
         "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=3540&auto=format&fit=crop",
+      related: ["building-transparent-software", "efficient-workflows"],
     },
     {
       id: "3",
@@ -244,6 +246,7 @@ export async function seedArticles() {
       readTime: "6 min read",
       image:
         "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=3540&auto=format&fit=crop",
+      related: ["building-transparent-software", "modern-web-development"],
     },
   ];
 
@@ -252,4 +255,91 @@ export async function seedArticles() {
 
   // Insert new articles
   return createOps.createMany(seed);
+}
+
+export async function getRelatedArticles(slug: string, limit: number = 3) {
+  const db = client.db(process.env.DB);
+  const readOps = new ReadOperations<Article>(db, "articles");
+
+  // First get the current article to find its tag
+  const currentArticle = await readOps.findOne(
+    { slug },
+    {
+      projection: {
+        _id: 0,
+        tag: 1,
+        related: 1,
+      },
+    },
+  );
+
+  console.log(currentArticle);
+
+  if (!currentArticle) return [];
+
+  // If the article has explicitly defined related articles, use those
+  if (currentArticle.related?.length) {
+    return readOps.findMany(
+      {
+        $and: [
+          { slug: { $in: currentArticle.related } },
+          { slug: { $ne: slug } }, // Exclude current article
+        ],
+      },
+      {
+        projection: {
+          _id: 0,
+          slug: 1,
+          title: 1,
+          excerpt: 1,
+          date: 1,
+          image: 1,
+        },
+        limit,
+      },
+    );
+  }
+
+  // Otherwise, find articles with the same tag
+  if (currentArticle.tag) {
+    return readOps.findMany(
+      {
+        $and: [
+          { tag: currentArticle.tag },
+          { slug: { $ne: slug } }, // Exclude current article
+        ],
+      },
+      {
+        projection: {
+          _id: 0,
+          slug: 1,
+          title: 1,
+          excerpt: 1,
+          date: 1,
+          image: 1,
+        },
+        sort: { date: -1 },
+        limit,
+      },
+    );
+  }
+
+  // If no tag or related articles, return most recent articles
+  return readOps.findMany(
+    {
+      slug: { $ne: slug }, // Exclude current article
+    },
+    {
+      projection: {
+        _id: 0,
+        slug: 1,
+        title: 1,
+        excerpt: 1,
+        date: 1,
+        image: 1,
+      },
+      sort: { date: -1 },
+      limit,
+    },
+  );
 }

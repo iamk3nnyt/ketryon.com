@@ -15,11 +15,5 @@ export interface Article extends BaseDocument {
   tag: string;
   readTime: string;
   image: string;
-  related?: Array<{
-    id: string;
-    slug: string;
-    title: string;
-    excerpt: string;
-    tag: string;
-  }>;
+  related?: string[];
 }
