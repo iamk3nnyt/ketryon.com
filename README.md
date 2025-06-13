@@ -4,24 +4,13 @@ A modern, open-source agency website built with transparency and efficiency at i
 
 ---
 
-## ✨ Features
-
-- **Open Source by Default:** All code is public and auditable.
-- **Transparency:** Real-time project visibility and clear communication.
-- **Modern, Responsive UI:** Beautiful, accessible design with Tailwind CSS.
-- **Contact & Project Kickoff:** Easy project initiation and communication.
-- **Trust Badges & Social Proof:** Built-in credibility indicators.
-- **Calendar Integration:** Schedule meetings and demos seamlessly.
-- **Component-Based Architecture:** Clean, maintainable codebase.
-
----
-
 ## 🛠️ Tech Stack
 
 - **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS
 - **UI/UX:** Lucide Icons, Motion, Custom Fonts
 - **Calendar:** Cal.com Embed
 - **Analytics:** Vercel Analytics
+- **SEO:** Next.js Metadata API, Open Graph, Twitter Card, JSON-LD
 - **Tooling:** ESLint, Prettier, pnpm
 
 ---
@@ -32,28 +21,33 @@ A modern, open-source agency website built with transparency and efficiency at i
 
 ---
 
-## 🚀 Getting Started
+## 📝 Contributing
+
+Contributions are welcome! Please read the [Contributing Guide](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting issues or pull requests.
+
+- [Open an Issue](https://github.com/iamk3nnyt/ketryon.com/issues)
+- [Submit a Pull Request](https://github.com/iamk3nnyt/ketryon.com/pulls)
+
+---
+
+## 🏁 Getting Started
 
 1. **Clone the repo:**
    ```sh
-   git clone https://github.com/your-org/ketryon.com.git
+   git clone https://github.com/iamk3nnyt/ketryon.com.git
    cd ketryon.com
    ```
 2. **Install dependencies:**
    ```sh
    pnpm install
    ```
-3. **Run the dev server:**
+3. **Set up environment variables:**
+   - Copy `.env.example` to `.env.local` and fill in any required values
+4. **Run the dev server:**
    ```sh
    pnpm dev
    ```
-4. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting issues or pull requests.
+5. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
 
 ---
 
@@ -62,15 +56,3 @@ We welcome contributions! Please read our [Code of Conduct](./CODE_OF_CONDUCT.md
 This project is [MIT licensed](./LICENSE).
 
 ---
-
-## 🙏 Acknowledgements
-
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Cal.com](https://cal.com/)
-- [Vercel](https://vercel.com/)
-- [Lucide Icons](https://lucide.dev/)
-
----
-
-> Made with transparency and ❤️ by the ketryon.com team and community
