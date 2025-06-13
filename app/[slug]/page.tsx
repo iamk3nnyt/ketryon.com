@@ -1,5 +1,5 @@
 import { AppImage } from "@/components/app-image";
-import type { BlogPost } from "@/types";
+import type { BlogPost } from "@/types/blog";
 import { ArrowLeft, Clock } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

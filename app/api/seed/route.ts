@@ -1,5 +1,5 @@
 import client from "@/lib/mongodb";
-import type { BlogPost } from "@/types";
+import type { BlogPost } from "@/types/blog";
 import { NextResponse } from "next/server";
 
 const samplePosts: BlogPost[] = [

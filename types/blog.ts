@@ -1,4 +1,6 @@
-export interface BlogPost {
+import { BaseDocument } from "@/lib/db/types";
+
+export interface Article extends BaseDocument {
   id: string;
   slug: string;
   title: string;
