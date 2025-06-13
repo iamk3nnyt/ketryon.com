@@ -1,6 +1,5 @@
 import { BASE_URL } from "@/constants";
 import { cn } from "@/lib/utils";
-import { Analytics } from "@vercel/analytics/next";
 import { MotionConfig } from "motion/react";
 import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
@@ -157,10 +156,7 @@ export default function RootLayout({
             ></iframe>
           </noscript>
         )}
-        <MotionConfig reducedMotion="user">
-          {children}
-          <Analytics />
-        </MotionConfig>
+        <MotionConfig reducedMotion="user">{children}</MotionConfig>
       </body>
     </html>
   );

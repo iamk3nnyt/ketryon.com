@@ -52,8 +52,8 @@ function Process() {
         Effortless Process, Continuous Delivery
       </h2>
       <p className="max-w-xl text-base text-gray-700">
-        Our process is designed for clarity, speed, and quality. Here's how we
-        take your project from idea to launch and beyond.
+        Our process is designed for clarity, speed, and quality. Here&apos;s how
+        we take your project from idea to launch and beyond.
       </p>
       <div className="mb-2 overflow-x-auto">
         <div className="flex min-w-[700px] gap-6 sm:min-w-full">
@@ -177,7 +177,7 @@ function Transparency() {
           Transparency Benefits Everyone
         </h3>
         <p className="max-w-2xl text-gray-600">
-          We keep you in the loop at every step. Here's what a typical
+          We keep you in the loop at every step. Here&apos;s what a typical
           conversation looks like between you and our team.
         </p>
       </div>
@@ -226,7 +226,7 @@ function Chat() {
               <span className="text-xs text-gray-400">10:03 AM</span>
             </div>
             <div className="max-w-[90vw] rounded-xl bg-white px-5 py-3 text-gray-900 shadow sm:max-w-[60%]">
-              Absolutely! We'll send over a few color options by tomorrow.
+              Absolutely! We&apos;ll send over a few color options by tomorrow.
             </div>
           </div>
         </div>
@@ -267,7 +267,7 @@ function Chat() {
               <span className="text-xs text-gray-400">10:05 AM</span>
             </div>
             <div className="max-w-[90vw] rounded-xl bg-white px-5 py-3 text-gray-900 shadow sm:max-w-[60%]">
-              Of course! We're on track to deliver the blog feature by next
+              Of course! We&apos;re on track to deliver the blog feature by next
               Friday.
             </div>
           </div>

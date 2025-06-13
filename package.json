@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
-    "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.513.0",
     "mongodb": "^6.17.0",
