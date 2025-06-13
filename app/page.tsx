@@ -1,5 +1,3 @@
-"use client";
-
 import { Accordion } from "@/components/accordion";
 import { AppImage } from "@/components/app-image";
 import { Calendar } from "@/components/calendar";
@@ -496,7 +494,7 @@ function Faq() {
   );
 }
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className="relative mx-auto flex w-full max-w-5xl flex-col gap-y-12 px-4 py-16">
       <Header />

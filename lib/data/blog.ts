@@ -75,75 +75,6 @@ export async function deleteAllArticles() {
   return deleteOps.deleteMany({});
 }
 
-// Featured Article operations
-export async function getFeaturedArticles(
-  filter: Filter<Article> = { featured: true },
-) {
-  const db = client.db(process.env.DB);
-  const readOps = new ReadOperations<Article>(db, "articles");
-
-  return readOps.findMany(filter, {
-    projection: {
-      _id: 0,
-      slug: 1,
-      title: 1,
-      excerpt: 1,
-      date: 1,
-    },
-    sort: { date: -1 },
-  });
-}
-
-export async function getFeaturedArticleBySlug(slug: string) {
-  const db = client.db(process.env.DB);
-  const readOps = new ReadOperations<Article>(db, "articles");
-
-  return readOps.findOne(
-    { slug, featured: true },
-    {
-      projection: {
-        _id: 0,
-        slug: 1,
-        title: 1,
-        excerpt: 1,
-        date: 1,
-      },
-    },
-  );
-}
-
-export async function createFeaturedArticle(
-  data: Omit<Article, keyof BaseDocument>,
-) {
-  const db = client.db(process.env.DB);
-  const createOps = new CreateOperations<Article>(db, "articles");
-
-  return createOps.createOne(data);
-}
-
-export async function createManyFeaturedArticles(
-  data: Array<Omit<Article, keyof BaseDocument>>,
-) {
-  const db = client.db(process.env.DB);
-  const createOps = new CreateOperations<Article>(db, "articles");
-
-  return createOps.createMany(data);
-}
-
-export async function deleteFeaturedArticle(slug: string) {
-  const db = client.db(process.env.DB);
-  const deleteOps = new DeleteOperations<Article>(db, "articles");
-
-  return deleteOps.deleteOne({ slug });
-}
-
-export async function deleteAllFeaturedArticles() {
-  const db = client.db(process.env.DB);
-  const deleteOps = new DeleteOperations<Article>(db, "articles");
-
-  return deleteOps.deleteMany({});
-}
-
 export async function getPaginatedArticles(page: number, limit: number) {
   const db = client.db(process.env.DB);
   const readOps = new ReadOperations<Article>(db, "articles");
@@ -222,45 +153,119 @@ export async function seedArticles() {
 
   const seed = [
     {
-      slug: "crafting-design-system",
-      title: "Crafting a design system for a multiplanetary future",
-      date: "September 5, 2022",
+      id: "1",
+      slug: "building-transparent-software",
+      title:
+        "Building Transparent Software: A Guide to Open Source Development",
       excerpt:
-        "Most companies try to stay ahead of the curve when it comes to visual design. For Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.",
+        "Learn how transparency in software development leads to better products, stronger communities, and more successful projects.",
       content: `
-      <p>Most companies try to stay ahead of the curve when it comes to visual design. For Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.</p>
-      <h2>Why a Design System?</h2>
-      <p>A design system is more than a set of UI components. It's a shared language for teams to build consistent, scalable products. For a multiplanetary future, this consistency is even more important.</p>
+      <h2>The Power of Transparency</h2>
+      <p>In today's digital landscape, transparency isn't just a buzzword—it's a fundamental principle that drives innovation and trust. When we build software with transparency at its core, we create products that are not only more reliable but also more valuable to the community.</p>
+
+      <h2>Why Open Source Matters</h2>
+      <p>Open source development brings numerous benefits to both developers and users. From improved security through peer review to faster innovation through collaboration, the advantages are clear and compelling.</p>
+
+      <h2>Best Practices for Transparent Development</h2>
       <ul>
-        <li>Unified branding across platforms</li>
-        <li>Reusable components for rapid development</li>
-        <li>Accessibility and performance at scale</li>
+        <li>Clear documentation and code comments</li>
+        <li>Regular updates and changelogs</li>
+        <li>Community engagement and feedback</li>
+        <li>Open communication channels</li>
       </ul>
-      <p>By investing in a robust design system, we ensure our products are ready for the challenges of tomorrow.</p>
+
+      <h2>Conclusion</h2>
+      <p>Building transparent software isn't just about sharing code—it's about creating a culture of openness and collaboration that benefits everyone involved.</p>
     `,
-      image: "https://example.com/nextjs.jpg",
-      featured: false,
+      date: "2024-03-15",
+      author: {
+        name: "Kenny Tran",
+        image: "/avatar.png",
+      },
+      tag: "Development",
+      readTime: "5 min read",
+      image:
+        "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=3540&auto=format&fit=crop",
     },
     {
-      slug: "building-ai-applications",
-      title: "Building AI Applications with Next.js and OpenAI",
-      date: "March 15, 2023",
+      id: "2",
+      slug: "modern-web-development",
+      title: "Modern Web Development: Trends and Best Practices",
       excerpt:
-        "Learn how to build powerful AI applications using Next.js and OpenAI's API. This guide covers everything from setting up your project to implementing advanced AI features.",
+        "Explore the latest trends in web development and learn how to implement them in your projects.",
       content: `
-      <p>Artificial Intelligence is transforming how we build applications. With Next.js and OpenAI, we can create powerful AI-driven experiences that were once only possible in science fiction.</p>
-      <h2>Getting Started</h2>
-      <p>Setting up an AI application requires careful consideration of both frontend and backend architecture. Here's how we can structure our application for optimal performance and user experience.</p>
+      <h2>The Evolution of Web Development</h2>
+      <p>Web development has come a long way from static HTML pages to dynamic, interactive applications. Today's web development landscape is rich with tools, frameworks, and best practices that make building modern web applications easier and more efficient.</p>
+
+      <h2>Key Trends in 2024</h2>
       <ul>
-        <li>Setting up Next.js with TypeScript</li>
-        <li>Integrating OpenAI's API</li>
-        <li>Building a responsive UI</li>
-        <li>Implementing error handling</li>
+        <li>Server Components and Edge Computing</li>
+        <li>TypeScript Adoption</li>
+        <li>Performance Optimization</li>
+        <li>Accessibility First Development</li>
       </ul>
-      <p>By following these steps, you'll have a solid foundation for building AI-powered applications.</p>
+
+      <h2>Best Practices</h2>
+      <p>Implementing modern web development practices requires a focus on performance, accessibility, and user experience. Here are some key areas to consider:</p>
+
+      <h3>Performance</h3>
+      <p>Optimize your applications for speed and efficiency using techniques like code splitting, lazy loading, and image optimization.</p>
+
+      <h3>Accessibility</h3>
+      <p>Ensure your applications are accessible to all users by following WCAG guidelines and implementing proper semantic HTML.</p>
+
+      <h2>Conclusion</h2>
+      <p>Staying current with web development trends and best practices is essential for building successful applications in today's digital landscape.</p>
     `,
-      image: "https://example.com/nextjs.jpg",
-      featured: false,
+      date: "2024-03-10",
+      author: {
+        name: "Kenny Tran",
+        image: "/avatar.png",
+      },
+      tag: "Web Development",
+      readTime: "7 min read",
+      image:
+        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=3540&auto=format&fit=crop",
+    },
+    {
+      id: "3",
+      slug: "efficient-workflows",
+      title: "Creating Efficient Development Workflows",
+      excerpt:
+        "Discover how to streamline your development process and boost team productivity.",
+      content: `
+      <h2>The Importance of Efficient Workflows</h2>
+      <p>In software development, efficiency isn't just about writing code faster—it's about creating sustainable, scalable processes that help teams deliver high-quality software consistently.</p>
+
+      <h2>Key Components of Efficient Workflows</h2>
+      <ul>
+        <li>Automated Testing</li>
+        <li>Continuous Integration/Deployment</li>
+        <li>Code Review Processes</li>
+        <li>Documentation Practices</li>
+      </ul>
+
+      <h2>Implementing Best Practices</h2>
+      <p>Creating efficient workflows requires careful planning and implementation. Here are some strategies to consider:</p>
+
+      <h3>Automation</h3>
+      <p>Automate repetitive tasks to save time and reduce errors. This includes testing, deployment, and code quality checks.</p>
+
+      <h3>Collaboration</h3>
+      <p>Foster a culture of collaboration through clear communication channels and effective code review processes.</p>
+
+      <h2>Conclusion</h2>
+      <p>Efficient workflows are the foundation of successful software development teams. By implementing these practices, you can improve productivity and code quality.</p>
+    `,
+      date: "2024-03-05",
+      author: {
+        name: "Kenny Tran",
+        image: "/avatar.png",
+      },
+      tag: "Workflow",
+      readTime: "6 min read",
+      image:
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=3540&auto=format&fit=crop",
     },
   ];
 
@@ -268,61 +273,5 @@ export async function seedArticles() {
   await deleteOps.deleteMany({});
 
   // Insert new articles
-  return createOps.createMany(seed);
-}
-
-export async function seedFeaturedArticles() {
-  const db = client.db(process.env.DB);
-  const createOps = new CreateOperations<Article>(db, "articles");
-  const deleteOps = new DeleteOperations<Article>(db, "articles");
-
-  const seed = [
-    {
-      slug: "crafting-design-system-featured",
-      title: "Crafting a design system for a multiplanetary future",
-      date: "September 5, 2022",
-      excerpt:
-        "Most companies try to stay ahead of the curve when it comes to visual design. For Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.",
-      content: `
-      <p>Most companies try to stay ahead of the curve when it comes to visual design. For Planetaria we needed to create a brand that would still inspire us 100 years from now when humanity has spread across our entire solar system.</p>
-      <h2>Why a Design System?</h2>
-      <p>A design system is more than a set of UI components. It's a shared language for teams to build consistent, scalable products. For a multiplanetary future, this consistency is even more important.</p>
-      <ul>
-        <li>Unified branding across platforms</li>
-        <li>Reusable components for rapid development</li>
-        <li>Accessibility and performance at scale</li>
-      </ul>
-      <p>By investing in a robust design system, we ensure our products are ready for the challenges of tomorrow.</p>
-    `,
-      image: "https://example.com/nextjs.jpg",
-      featured: true,
-    },
-    {
-      slug: "building-ai-applications-featured",
-      title: "Building AI Applications with Next.js and OpenAI",
-      date: "March 15, 2023",
-      excerpt:
-        "Learn how to build powerful AI applications using Next.js and OpenAI's API. This guide covers everything from setting up your project to implementing advanced AI features.",
-      content: `
-      <p>Artificial Intelligence is transforming how we build applications. With Next.js and OpenAI, we can create powerful AI-driven experiences that were once only possible in science fiction.</p>
-      <h2>Getting Started</h2>
-      <p>Setting up an AI application requires careful consideration of both frontend and backend architecture. Here's how we can structure our application for optimal performance and user experience.</p>
-      <ul>
-        <li>Setting up Next.js with TypeScript</li>
-        <li>Integrating OpenAI's API</li>
-        <li>Building a responsive UI</li>
-        <li>Implementing error handling</li>
-      </ul>
-      <p>By following these steps, you'll have a solid foundation for building AI-powered applications.</p>
-    `,
-      image: "https://example.com/nextjs.jpg",
-      featured: true,
-    },
-  ];
-
-  // Clear existing featured articles
-  await deleteOps.deleteMany({});
-
-  // Insert new featured articles
   return createOps.createMany(seed);
 }
