@@ -1,9 +1,50 @@
 import { AppImage } from "@/components/app-image";
 import { BASE_URL } from "@/constants";
 import { getArticleBySlug, getRelatedArticles } from "@/lib/data/blog";
+import { buildMetadata, extractKeywords } from "@/lib/metadata";
 import { ArrowLeft, Clock } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const slug = (await params).slug;
+  const article = await getArticleBySlug(slug);
+  if (!article) {
+    return {
+      title: "Article Not Found",
+      description: "The requested article could not be found.",
+    };
+  }
+
+  const wordCount = article.content.split(/\s+/).length;
+  const readingTimeISO = `PT${article.readTime.split(" ")[0]}M`;
+
+  return buildMetadata({
+    type: "article",
+    title: `${article.title} - Ketryon's Blog`,
+    description: article.excerpt,
+    path: `/${article.slug}`,
+    publishedTime: article.date,
+    modifiedTime: article.date,
+    author: article.author.name,
+    wordCount,
+    readingTime: readingTimeISO,
+    keywords: extractKeywords(article.content),
+    image: article.image
+      ? {
+          url: article.image,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        }
+      : undefined,
+  });
+}
 
 export default async function BlogArticlePage({
   params,
@@ -11,7 +52,6 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const slug = (await params).slug;
-
   const article = await getArticleBySlug(slug);
   if (!article) return notFound();
 

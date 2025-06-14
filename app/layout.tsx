@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/constants";
+import { buildMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 import { MotionConfig } from "motion/react";
 import type { Metadata, Viewport } from "next";
@@ -17,41 +18,29 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-export const metadata: Metadata = {
-  title: "Ketryon - Digital Agency | Transparent Software Services",
+const baseMetadata = buildMetadata({
+  type: "website",
+  title: "Ketryon - Web Development & Design",
   description:
-    "Ketryon is a digital agency providing software services through transparent processes and efficient workflows. We deliver exceptional solutions with clear communication and streamlined development.",
+    "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
+  path: "/",
+  organization: {
+    name: "Ketryon",
+    url: BASE_URL,
+    logo: BASE_URL + "/logo.png",
+    email: "kenny@ketryon.com",
+  },
+  image: {
+    url: "/og.png",
+    width: 1200,
+    height: 630,
+    alt: "Ketryon - Web Development & Design",
+  },
+});
+
+export const metadata: Metadata = {
+  ...baseMetadata,
   metadataBase: new URL(BASE_URL),
-  alternates: {
-    canonical: "./",
-    languages: {
-      "en-US": BASE_URL,
-    },
-  },
-  openGraph: {
-    title: "Ketryon - Digital Agency | Transparent Software Services",
-    description:
-      "Ketryon is a digital agency providing software services through transparent processes and efficient workflows. We deliver exceptional solutions with clear communication and streamlined development.",
-    url: "./",
-    siteName: "Ketryon",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Ketryon - Your Trusted Digital Agency Partner",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ketryon - Digital Agency | Transparent Software Services",
-    description:
-      "Ketryon is a digital agency providing software services through transparent processes and efficient workflows. We deliver exceptional solutions with clear communication and streamlined development.",
-    images: ["/og.png"],
-  },
   robots: {
     index: true,
     follow: true,

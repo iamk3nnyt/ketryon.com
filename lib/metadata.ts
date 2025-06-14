@@ -14,6 +14,17 @@ interface BaseMetadata {
   };
 }
 
+// Website root metadata
+interface WebsiteMetadata extends BaseMetadata {
+  type: "website";
+  organization?: {
+    name: string;
+    url: string;
+    logo: string;
+    email: string;
+  };
+}
+
 // Blog article specific metadata
 interface BlogArticleMetadata extends BaseMetadata {
   type: "article";
@@ -38,7 +49,7 @@ interface BlogIndexMetadata extends BaseMetadata {
 }
 
 // Union type of all possible metadata types
-type PageMetadata = BlogArticleMetadata | BlogIndexMetadata;
+type PageMetadata = WebsiteMetadata | BlogArticleMetadata | BlogIndexMetadata;
 
 // Helper function to generate schema.org JSON-LD
 function generateSchemaOrg(metadata: PageMetadata) {
@@ -51,24 +62,32 @@ function generateSchemaOrg(metadata: PageMetadata) {
     inLanguage: "en-US",
     isAccessibleForFree: true,
     isFamilyFriendly: true,
-    author: {
-      "@type": "Person",
-      name: "Kenny Tran",
-      url: BASE_URL + "/about",
-    },
-    publisher: {
-      "@type": "Person",
-      name: "Kenny Tran",
-      url: BASE_URL + "/about",
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${BASE_URL}${metadata.path}`,
-    },
   };
 
   // Add type-specific schema properties
   switch (metadata.type) {
+    case "website":
+      return {
+        ...baseSchema,
+        "@type": "WebSite",
+        ...(metadata.organization && {
+          publisher: {
+            "@type": "Organization",
+            name: metadata.organization.name,
+            url: metadata.organization.url,
+            logo: {
+              "@type": "ImageObject",
+              url: metadata.organization.logo,
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "customer service",
+              email: metadata.organization.email,
+              availableLanguage: ["English"],
+            },
+          },
+        }),
+      };
     case "article":
       return {
         ...baseSchema,
