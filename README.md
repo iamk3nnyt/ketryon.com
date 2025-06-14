@@ -8,6 +8,8 @@ A modern, open-source agency website built with Next.js 15+ and TypeScript.
 
 <!-- Add screenshots of the landing page, calendar integration, and UI components here -->
 
+![og](./public/og.png)
+
 ---
 
 ## 🛠️ Tech Stack
