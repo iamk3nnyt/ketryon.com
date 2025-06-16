@@ -147,3 +147,199 @@ export const icons = [
     ),
   },
 ];
+
+export const HttpError = {
+  // 4xx Client Errors
+  BAD_REQUEST: {
+    code: "BAD_REQUEST",
+    status: 400,
+    message: "Invalid request",
+  },
+  UNAUTHORIZED: {
+    code: "UNAUTHORIZED",
+    status: 401,
+    message: "Unauthorized access",
+  },
+  PAYMENT_REQUIRED: {
+    code: "PAYMENT_REQUIRED",
+    status: 402,
+    message: "Payment required",
+  },
+  FORBIDDEN: {
+    code: "FORBIDDEN",
+    status: 403,
+    message: "Access forbidden",
+  },
+  NOT_FOUND: {
+    code: "NOT_FOUND",
+    status: 404,
+    message: "Resource not found",
+  },
+  METHOD_NOT_ALLOWED: {
+    code: "METHOD_NOT_ALLOWED",
+    status: 405,
+    message: "Method not allowed",
+  },
+  NOT_ACCEPTABLE: {
+    code: "NOT_ACCEPTABLE",
+    status: 406,
+    message: "Not acceptable",
+  },
+  REQUEST_TIMEOUT: {
+    code: "REQUEST_TIMEOUT",
+    status: 408,
+    message: "Request timeout",
+  },
+  CONFLICT: {
+    code: "CONFLICT",
+    status: 409,
+    message: "Resource conflict",
+  },
+  GONE: {
+    code: "GONE",
+    status: 410,
+    message: "Resource gone",
+  },
+  LENGTH_REQUIRED: {
+    code: "LENGTH_REQUIRED",
+    status: 411,
+    message: "Length required",
+  },
+  PRECONDITION_FAILED: {
+    code: "PRECONDITION_FAILED",
+    status: 412,
+    message: "Precondition failed",
+  },
+  PAYLOAD_TOO_LARGE: {
+    code: "PAYLOAD_TOO_LARGE",
+    status: 413,
+    message: "Payload too large",
+  },
+  URI_TOO_LONG: {
+    code: "URI_TOO_LONG",
+    status: 414,
+    message: "URI too long",
+  },
+  UNSUPPORTED_MEDIA_TYPE: {
+    code: "UNSUPPORTED_MEDIA_TYPE",
+    status: 415,
+    message: "Unsupported media type",
+  },
+  RANGE_NOT_SATISFIABLE: {
+    code: "RANGE_NOT_SATISFIABLE",
+    status: 416,
+    message: "Range not satisfiable",
+  },
+  EXPECTATION_FAILED: {
+    code: "EXPECTATION_FAILED",
+    status: 417,
+    message: "Expectation failed",
+  },
+  IM_A_TEAPOT: {
+    code: "IM_A_TEAPOT",
+    status: 418,
+    message: "I'm a teapot",
+  },
+  UNPROCESSABLE_ENTITY: {
+    code: "UNPROCESSABLE_ENTITY",
+    status: 422,
+    message: "Unprocessable entity",
+  },
+  LOCKED: {
+    code: "LOCKED",
+    status: 423,
+    message: "Resource locked",
+  },
+  FAILED_DEPENDENCY: {
+    code: "FAILED_DEPENDENCY",
+    status: 424,
+    message: "Failed dependency",
+  },
+  TOO_EARLY: {
+    code: "TOO_EARLY",
+    status: 425,
+    message: "Too early",
+  },
+  UPGRADE_REQUIRED: {
+    code: "UPGRADE_REQUIRED",
+    status: 426,
+    message: "Upgrade required",
+  },
+  PRECONDITION_REQUIRED: {
+    code: "PRECONDITION_REQUIRED",
+    status: 428,
+    message: "Precondition required",
+  },
+  TOO_MANY_REQUESTS: {
+    code: "TOO_MANY_REQUESTS",
+    status: 429,
+    message: "Too many requests",
+  },
+  REQUEST_HEADER_FIELDS_TOO_LARGE: {
+    code: "REQUEST_HEADER_FIELDS_TOO_LARGE",
+    status: 431,
+    message: "Request header fields too large",
+  },
+  UNAVAILABLE_FOR_LEGAL_REASONS: {
+    code: "UNAVAILABLE_FOR_LEGAL_REASONS",
+    status: 451,
+    message: "Unavailable for legal reasons",
+  },
+
+  // 5xx Server Errors
+  INTERNAL_ERROR: {
+    code: "INTERNAL_ERROR",
+    status: 500,
+    message: "Internal server error",
+  },
+  NOT_IMPLEMENTED: {
+    code: "NOT_IMPLEMENTED",
+    status: 501,
+    message: "Not implemented",
+  },
+  BAD_GATEWAY: {
+    code: "BAD_GATEWAY",
+    status: 502,
+    message: "Bad gateway",
+  },
+  SERVICE_UNAVAILABLE: {
+    code: "SERVICE_UNAVAILABLE",
+    status: 503,
+    message: "Service unavailable",
+  },
+  GATEWAY_TIMEOUT: {
+    code: "GATEWAY_TIMEOUT",
+    status: 504,
+    message: "Gateway timeout",
+  },
+  HTTP_VERSION_NOT_SUPPORTED: {
+    code: "HTTP_VERSION_NOT_SUPPORTED",
+    status: 505,
+    message: "HTTP version not supported",
+  },
+  VARIANT_ALSO_NEGOTIATES: {
+    code: "VARIANT_ALSO_NEGOTIATES",
+    status: 506,
+    message: "Variant also negotiates",
+  },
+  INSUFFICIENT_STORAGE: {
+    code: "INSUFFICIENT_STORAGE",
+    status: 507,
+    message: "Insufficient storage",
+  },
+  LOOP_DETECTED: {
+    code: "LOOP_DETECTED",
+    status: 508,
+    message: "Loop detected",
+  },
+  NOT_EXTENDED: {
+    code: "NOT_EXTENDED",
+    status: 510,
+    message: "Not extended",
+  },
+  NETWORK_AUTHENTICATION_REQUIRED: {
+    code: "NETWORK_AUTHENTICATION_REQUIRED",
+    status: 511,
+    message: "Network authentication required",
+  },
+} as const;
