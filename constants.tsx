@@ -1,6 +1,16 @@
 export const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://www.ketryon.com";
 
+export const team = [
+  {
+    name: "Kenny Tran",
+    role: "Founder & CEO",
+    image: "/avatar.png",
+    bio: "Passionate about building transparent software solutions that make a difference.",
+    href: "https://www.kennyt.me/",
+  },
+];
+
 export const icons = [
   {
     name: "React",

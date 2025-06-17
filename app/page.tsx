@@ -3,6 +3,7 @@ import { AppImage } from "@/components/app-image";
 import { Calendar } from "@/components/calendar";
 import { Marquee } from "@/components/marquee";
 import { TrustBadge } from "@/components/trust-badge";
+import { team } from "@/constants";
 import { getArticles } from "@/lib/data/blog";
 import { cn } from "@/lib/utils";
 import Arrow from "@/public/arrow.svg";
@@ -445,10 +446,54 @@ function Flexibility() {
   );
 }
 
+function Team() {
+  return (
+    <section className="flex flex-col gap-y-6">
+      <span className="mb-2 w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+        Meet the Team
+      </span>
+      <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
+        The People Behind Ketryon
+      </h2>
+      <p className="max-w-xl text-base text-gray-700">
+        We're a team of passionate developers, designers, and product
+        enthusiasts dedicated to building exceptional software with transparency
+        and efficiency.
+      </p>
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {team.map((member) => (
+          <Link
+            className="group flex flex-col gap-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition hover:border-gray-200"
+            href={member.href}
+            key={member.name}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="relative aspect-square overflow-hidden rounded-xl">
+              <AppImage
+                alt={`${member.name}'s photo`}
+                src={member.image}
+                className="object-cover transition group-hover:scale-105"
+              />
+            </div>
+            <div className="flex flex-col gap-y-1">
+              <h3 className="font-semibold text-gray-900 group-hover:text-blue-600">
+                {member.name}
+              </h3>
+              <p className="text-sm text-gray-600">{member.role}</p>
+              <p className="mt-2 text-sm text-gray-600">{member.bio}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Faq() {
   return (
     <section id="faq" className="flex flex-col gap-y-6">
-      <span className="mb-2 w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
+      <span className="mb-2 w-fit rounded-md bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
         FAQ
       </span>
       <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
@@ -576,6 +621,7 @@ export default async function Home() {
       <Chat />
       <Services />
       <Flexibility />
+      <Team />
       <Faq />
       <Blog />
     </main>
