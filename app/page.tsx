@@ -15,7 +15,7 @@ const handlee = Handlee({ weight: ["400"], subsets: ["latin"] });
 
 function Header() {
   return (
-    <header className="flex flex-col gap-y-6">
+    <header id="home" className="flex flex-col gap-y-6">
       <h1 className="text-3xl font-bold tracking-tight sm:text-5xl md:text-5xl">
         Building Software with
         <br />
@@ -44,7 +44,7 @@ function Header() {
 
 function Process() {
   return (
-    <section className="mb-16 flex flex-col gap-y-6">
+    <section id="process" className="mb-16 flex flex-col gap-y-6">
       <span className="mb-2 w-fit rounded-md bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
         Our Process
       </span>
@@ -108,7 +108,7 @@ function Process() {
 
 function Techstack() {
   return (
-    <div className="relative">
+    <div id="tech-stack" className="relative">
       <div className="absolute right-0 bottom-16 z-20">
         <span
           className={cn(
@@ -127,7 +127,7 @@ function Techstack() {
 
 function Transparency() {
   return (
-    <section className="flex flex-col gap-y-6">
+    <section id="transparency" className="flex flex-col gap-y-6">
       <span className="mb-2 w-fit rounded-md bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
         Open Source & Transparency
       </span>
@@ -279,7 +279,7 @@ function Chat() {
 
 function Services() {
   return (
-    <section className="flex flex-col gap-y-6">
+    <section id="services" className="flex flex-col gap-y-6">
       <h2 className="text-2xl font-bold sm:text-3xl md:text-4xl">
         Services & Products That Drive Results
       </h2>
@@ -447,7 +447,7 @@ function Flexibility() {
 
 function Faq() {
   return (
-    <section className="flex flex-col gap-y-6">
+    <section id="faq" className="flex flex-col gap-y-6">
       <span className="mb-2 w-fit rounded-md bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-700">
         FAQ
       </span>

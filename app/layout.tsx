@@ -5,6 +5,7 @@ import { MotionConfig } from "motion/react";
 import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
 import Script from "next/script";
+import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const sora = Sora({ subsets: ["latin"] });
@@ -145,7 +146,12 @@ export default function RootLayout({
             ></iframe>
           </noscript>
         )}
-        <MotionConfig reducedMotion="user">{children}</MotionConfig>
+        <MotionConfig reducedMotion="user">
+          <div className="flex min-h-screen flex-col">
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </MotionConfig>
       </body>
     </html>
   );
