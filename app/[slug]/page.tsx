@@ -122,7 +122,7 @@ export default async function BlogArticlePage({
       )}
 
       {/* Content */}
-      <article className="prose prose-gray max-w-none">
+      <article className="prose prose-gray -mt-12 max-w-none">
         <div dangerouslySetInnerHTML={{ __html: article.content }} />
       </article>
 
