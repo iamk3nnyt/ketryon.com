@@ -452,7 +452,7 @@ function Team() {
         The People Behind Ketryon
       </h2>
       <p className="max-w-xl text-base text-gray-700">
-        We're a team of passionate developers, designers, and product
+        We&apos;re a team of passionate developers, designers, and product
         enthusiasts dedicated to building exceptional software with transparency
         and efficiency.
       </p>

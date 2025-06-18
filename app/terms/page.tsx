@@ -36,15 +36,15 @@ export default function TermsPage() {
         <h2>2. Definitions</h2>
         <ul>
           <li>
-            <strong>"Service"</strong> refers to the software development and
-            consulting services provided by Ketryon.
+            <strong>&quot;Service&quot;</strong> refers to the software
+            development and consulting services provided by Ketryon.
           </li>
           <li>
-            <strong>"Client"</strong> refers to any individual or organization
-            using our services.
+            <strong>&quot;Client&quot;</strong> refers to any individual or
+            organization using our services.
           </li>
           <li>
-            <strong>"Project"</strong> refers to any specific work or
+            <strong>&quot;Project&quot;</strong> refers to any specific work or
             deliverable agreed upon between Ketryon and the Client.
           </li>
         </ul>
@@ -97,8 +97,8 @@ export default function TermsPage() {
 
         <h2>8. Limitation of Liability</h2>
         <p>
-          Ketryon's liability is limited to the amount paid by the Client for
-          the specific project. We are not liable for:
+          Ketryon&apos;s liability is limited to the amount paid by the Client
+          for the specific project. We are not liable for:
         </p>
         <ul>
           <li>Indirect or consequential damages</li>

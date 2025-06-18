@@ -111,7 +111,7 @@ export default function PrivacyPage() {
           their privacy policies.
         </p>
 
-        <h2>9. Children's Privacy</h2>
+        <h2>9. Children&apos;s Privacy</h2>
         <p>
           Our services are not intended for individuals under 18 years of age.
           We do not knowingly collect personal information from children.
@@ -121,7 +121,7 @@ export default function PrivacyPage() {
         <p>
           We may update this Privacy Policy periodically. We will notify you of
           any material changes by posting the new policy on this page and
-          updating the "Last updated" date.
+          updating the &quot;Last updated&quot; date.
         </p>
 
         <h2>11. Contact Us</h2>
