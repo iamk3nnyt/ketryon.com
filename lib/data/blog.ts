@@ -6,7 +6,6 @@ import client from "@/lib/mongodb";
 import { Article } from "@/types/blog";
 import { Filter } from "mongodb";
 
-// Article operations
 export async function getArticles(filter: Filter<Article> = {}) {
   const db = client.db(process.env.DB);
   const readOps = new ReadOperations<Article>(db, "articles");
@@ -123,7 +122,6 @@ export async function getRecentArticles(limit: number = 5) {
   );
 }
 
-// Seed operations
 export async function seedArticles() {
   const db = client.db(process.env.DB);
   const createOps = new CreateOperations<Article>(db, "articles");
@@ -250,10 +248,8 @@ export async function seedArticles() {
     },
   ];
 
-  // Clear existing articles
   await deleteOps.deleteMany({});
 
-  // Insert new articles
   return createOps.createMany(seed);
 }
 
@@ -261,7 +257,6 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
   const db = client.db(process.env.DB);
   const readOps = new ReadOperations<Article>(db, "articles");
 
-  // First get the current article to find its tag
   const currentArticle = await readOps.findOne(
     { slug },
     {
@@ -275,13 +270,12 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
 
   if (!currentArticle) return [];
 
-  // If the article has explicitly defined related articles, use those
   if (currentArticle.related?.length) {
     return readOps.findMany(
       {
         $and: [
           { slug: { $in: currentArticle.related } },
-          { slug: { $ne: slug } }, // Exclude current article
+          { slug: { $ne: slug } },
         ],
       },
       {
@@ -298,14 +292,10 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
     );
   }
 
-  // Otherwise, find articles with the same tag
   if (currentArticle.tag) {
     return readOps.findMany(
       {
-        $and: [
-          { tag: currentArticle.tag },
-          { slug: { $ne: slug } }, // Exclude current article
-        ],
+        $and: [{ tag: currentArticle.tag }, { slug: { $ne: slug } }],
       },
       {
         projection: {
@@ -322,10 +312,9 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
     );
   }
 
-  // If no tag or related articles, return most recent articles
   return readOps.findMany(
     {
-      slug: { $ne: slug }, // Exclude current article
+      slug: { $ne: slug },
     },
     {
       projection: {

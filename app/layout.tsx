@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { BASE_URL } from "@/constants";
 import { buildMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
@@ -5,7 +6,6 @@ import { MotionConfig } from "motion/react";
 import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
 import Script from "next/script";
-import { Footer } from "@/components/footer";
 import "./globals.css";
 
 const sora = Sora({ subsets: ["latin"] });
@@ -96,7 +96,6 @@ export default function RootLayout({
           data-culture="EN"
           data-gcm-version="2.0"
         />
-        {/* Google Tag Manager (only in production) */}
         {process.env.NODE_ENV === "production" && (
           <Script
             id="google-tag-manager"

@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 export default function PrivacyPage() {
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-y-8 px-4 py-16">
-      {/* Back Button */}
       <Link
         href="/"
         className="group inline-flex w-fit items-center gap-x-2 text-sm font-medium text-gray-600 transition hover:text-gray-900"
@@ -13,7 +12,6 @@ export default function PrivacyPage() {
         Back to Home
       </Link>
 
-      {/* Header */}
       <header className="flex flex-col gap-y-4">
         <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl">
           Privacy Policy
@@ -28,7 +26,6 @@ export default function PrivacyPage() {
         </p>
       </header>
 
-      {/* Content */}
       <div className="prose prose-gray max-w-none">
         <h2>1. Introduction</h2>
         <p>

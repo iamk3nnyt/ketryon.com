@@ -18,7 +18,6 @@ export function Footer() {
     <footer className="border-t border-gray-100 bg-white">
       <div className="mx-auto max-w-5xl px-4 py-12">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {/* Brand Section */}
           <div className="flex flex-col gap-y-4">
             <Link href="/" className="flex items-center gap-x-2">
               <span className="text-xl font-bold text-gray-900">Ketryon</span>
@@ -30,7 +29,6 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Navigation Section */}
           <div className="flex flex-col gap-y-4">
             <h3 className="text-sm font-semibold text-gray-900">Navigation</h3>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
@@ -48,7 +46,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section */}
         <div className="mt-12 border-t border-gray-100 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-gray-600">

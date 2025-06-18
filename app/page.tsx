@@ -190,7 +190,6 @@ function Chat() {
   return (
     <section className="mb-16 w-full rounded-2xl bg-gray-50 px-4 py-10">
       <div className="flex flex-col gap-y-8">
-        {/* You (client) message 1 */}
         <div className="flex w-full flex-row-reverse items-start gap-3">
           <div className="relative size-9">
             <AppImage
@@ -210,7 +209,6 @@ function Chat() {
             </div>
           </div>
         </div>
-        {/* We (agency) message 2 */}
         <div className="flex w-full items-start gap-3">
           <div className="relative size-9">
             <AppImage
@@ -231,7 +229,6 @@ function Chat() {
             </div>
           </div>
         </div>
-        {/* You (client) message 3 */}
         <div className="flex w-full flex-row-reverse items-start gap-3">
           <div className="relative size-9">
             <AppImage
@@ -251,7 +248,6 @@ function Chat() {
             </div>
           </div>
         </div>
-        {/* We (agency) message 4 */}
         <div className="flex w-full items-start gap-3">
           <div className="relative size-9">
             <AppImage
