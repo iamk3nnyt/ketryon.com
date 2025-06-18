@@ -1,7 +1,6 @@
 import { BASE_URL } from "@/constants";
 import type { Metadata } from "next";
 
-// Base metadata interface that all page types will extend
 interface BaseMetadata {
   title: string;
   description: string;
@@ -14,7 +13,6 @@ interface BaseMetadata {
   };
 }
 
-// Website root metadata
 interface WebsiteMetadata extends BaseMetadata {
   type: "website";
   organization?: {
@@ -25,7 +23,6 @@ interface WebsiteMetadata extends BaseMetadata {
   };
 }
 
-// Blog article specific metadata
 interface BlogArticleMetadata extends BaseMetadata {
   type: "article";
   publishedTime: string;
@@ -36,7 +33,6 @@ interface BlogArticleMetadata extends BaseMetadata {
   keywords: string[];
 }
 
-// Blog index page metadata
 interface BlogIndexMetadata extends BaseMetadata {
   type: "blog";
   posts: Array<{
@@ -48,10 +44,8 @@ interface BlogIndexMetadata extends BaseMetadata {
   }>;
 }
 
-// Union type of all possible metadata types
 type PageMetadata = WebsiteMetadata | BlogArticleMetadata | BlogIndexMetadata;
 
-// Helper function to generate schema.org JSON-LD
 function generateSchemaOrg(metadata: PageMetadata) {
   const baseSchema = {
     "@context": "https://schema.org",
@@ -64,7 +58,6 @@ function generateSchemaOrg(metadata: PageMetadata) {
     isFamilyFriendly: true,
   };
 
-  // Add type-specific schema properties
   switch (metadata.type) {
     case "website":
       return {
@@ -136,7 +129,6 @@ function generateSchemaOrg(metadata: PageMetadata) {
   }
 }
 
-// Main metadata builder function
 export function buildMetadata(metadata: PageMetadata): Metadata {
   const defaultImage = {
     url: "/og.png",
@@ -176,7 +168,6 @@ export function buildMetadata(metadata: PageMetadata): Metadata {
   };
 }
 
-// Helper function to extract keywords from content
 export function extractKeywords(content: string): string[] {
   const commonTerms = ["design", "development", "web", "tutorial", "essay"];
   const words = content.toLowerCase().split(/\W+/);
