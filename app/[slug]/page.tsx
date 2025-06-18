@@ -58,8 +58,7 @@ export default async function BlogArticlePage({
   const relatedArticles = await getRelatedArticles(slug);
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-y-8 px-4 py-16">
-      {/* Back Button */}
+    <main className="mx-auto flex w-full max-w-5xl flex-col gap-y-8 px-4 py-16">
       <Link
         href="/"
         className="group inline-flex w-fit items-center gap-x-2 text-sm font-medium text-gray-600 transition hover:text-gray-900"
@@ -68,7 +67,6 @@ export default async function BlogArticlePage({
         Back to Home
       </Link>
 
-      {/* Header */}
       <header className="flex flex-col gap-y-4">
         {article.tag && (
           <span className="w-fit rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
@@ -79,7 +77,6 @@ export default async function BlogArticlePage({
           {article.title}
         </h1>
         <div className="flex flex-col gap-y-3 sm:flex-row sm:items-center sm:gap-x-4">
-          {/* Author */}
           <div className="flex items-center gap-x-2">
             <div className="relative size-6 shrink-0">
               <AppImage
@@ -92,7 +89,6 @@ export default async function BlogArticlePage({
               {article.author.name}
             </span>
           </div>
-          {/* Meta */}
           <div className="flex flex-wrap items-center gap-x-3 text-sm text-gray-600">
             <time dateTime={article.date} className="whitespace-nowrap">
               {new Date(article.date).toLocaleDateString("en-US", {
@@ -109,7 +105,6 @@ export default async function BlogArticlePage({
         </div>
       </header>
 
-      {/* Featured Image */}
       {article.image && (
         <div className="relative aspect-video overflow-hidden rounded-xl">
           <AppImage
@@ -121,12 +116,10 @@ export default async function BlogArticlePage({
         </div>
       )}
 
-      {/* Content */}
       <article className="prose prose-gray -mt-12 max-w-none">
         <div dangerouslySetInnerHTML={{ __html: article.content }} />
       </article>
 
-      {/* Author Bio */}
       <div className="flex items-start gap-4 rounded-lg border border-gray-100 bg-gray-50/50 p-6">
         <div className="relative size-12 shrink-0">
           <AppImage
@@ -144,13 +137,12 @@ export default async function BlogArticlePage({
         </div>
       </div>
 
-      {/* Related Articles */}
       <div>
         <h2 className="mb-6 text-2xl font-bold">Related Articles</h2>
         <div className="grid gap-6 sm:grid-cols-2">
-          {relatedArticles.map((article) => (
+          {relatedArticles.map((article, idx) => (
             <Link
-              key={article.id}
+              key={idx}
               href={`/${article.slug}`}
               className="group flex flex-col gap-2 rounded-lg border border-gray-100 p-4 transition-colors hover:border-gray-200"
             >
@@ -166,7 +158,6 @@ export default async function BlogArticlePage({
         </div>
       </div>
 
-      {/* Social Share */}
       <div className="flex items-center gap-4">
         <span className="text-sm font-medium text-gray-700">
           Share this article:
