@@ -11,6 +11,37 @@ export const team = [
   },
 ];
 
+export const LEGAL_PAGE_LINK_CARDS = [
+  {
+    title: "Terms of Service",
+    description: "Rules and guidelines for using webarc.day",
+    href: "/legal/terms",
+    emoji: "📜",
+    color: "#DBEAFE",
+  },
+  {
+    title: "Privacy Policy",
+    description: "How we collect, use, and protect your data",
+    href: "/legal/privacy-policy",
+    emoji: "🔒",
+    color: "#D1FAE5",
+  },
+  {
+    title: "Cookie Policy",
+    description: "How we use cookies and similar technologies",
+    href: "/legal/cookies",
+    emoji: "🍪",
+    color: "#FFEDD5",
+  },
+  {
+    title: "Refund Policy",
+    description: "Our terms for refunds and cancellations",
+    href: "/legal/refund",
+    emoji: "💸",
+    color: "#F3E8FF",
+  },
+];
+
 export const icons = [
   {
     name: "React",

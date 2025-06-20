@@ -23,6 +23,11 @@ interface WebsiteMetadata extends BaseMetadata {
   };
 }
 
+interface LegalMetadata extends BaseMetadata {
+  type: "legal";
+  documentType: "privacy" | "terms" | "cookies" | "refund";
+}
+
 interface BlogArticleMetadata extends BaseMetadata {
   type: "article";
   publishedTime: string;
@@ -44,7 +49,11 @@ interface BlogIndexMetadata extends BaseMetadata {
   }>;
 }
 
-type PageMetadata = WebsiteMetadata | BlogArticleMetadata | BlogIndexMetadata;
+type PageMetadata =
+  | WebsiteMetadata
+  | LegalMetadata
+  | BlogArticleMetadata
+  | BlogIndexMetadata;
 
 function generateSchemaOrg(metadata: PageMetadata) {
   const baseSchema = {
@@ -80,6 +89,22 @@ function generateSchemaOrg(metadata: PageMetadata) {
             },
           },
         }),
+      };
+    case "legal":
+      return {
+        ...baseSchema,
+        "@type": "WebPage",
+        about: {
+          "@type": "Thing",
+          name:
+            metadata.documentType === "privacy"
+              ? "Privacy Policy"
+              : metadata.documentType === "terms"
+                ? "Terms of Service"
+                : metadata.documentType === "cookies"
+                  ? "Cookie Policy"
+                  : "Refund Policy",
+        },
       };
     case "article":
       return {
