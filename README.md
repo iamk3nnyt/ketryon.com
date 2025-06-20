@@ -56,5 +56,3 @@ Contributions are welcome! Please read the [Contributing Guide](./CONTRIBUTING.m
 ## 📄 License
 
 This project is [MIT licensed](./LICENSE).
-
----
