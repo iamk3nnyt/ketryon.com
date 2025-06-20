@@ -56,6 +56,13 @@ Contributions are welcome! Please read the [Contributing Guide](./CONTRIBUTING.m
    ```
 5. **Open [http://localhost:3000](http://localhost:3000) in your browser.**
 
+### Code Style
+
+- Follow existing code patterns
+- Use TypeScript for all new code
+- Add proper JSDoc comments
+- Ensure accessibility compliance
+
 ---
 
 ## 📄 License
