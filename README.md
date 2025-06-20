@@ -2,6 +2,11 @@
 
 A modern, open-source agency website built with Next.js 15+ and TypeScript.
 
+![Reflex Domain](https://img.shields.io/badge/Next.js-15.3.3-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+
 ---
 
 ## 🖼️ Screenshots
