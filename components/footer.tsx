@@ -47,11 +47,11 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-gray-100 pt-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
             <p className="text-sm text-gray-600">
               © {new Date().getFullYear()} Ketryon. All rights reserved.
             </p>
-            <div className="flex gap-x-6">
+            <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
               <Link
                 href="/privacy"
                 className="text-sm text-gray-600 transition hover:text-gray-900"
