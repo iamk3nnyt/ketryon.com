@@ -17,7 +17,7 @@ export async function GET() {
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>${BASE_URL}/egal/privacy-policy</loc>
+    <loc>${BASE_URL}/legal/privacy-policy</loc>
     <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
