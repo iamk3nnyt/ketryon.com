@@ -1,5 +1,15 @@
 import { LEGAL_PAGE_LINK_CARDS } from "@/constants";
+import { buildMetadata } from "@/lib/metadata";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = buildMetadata({
+  type: "website",
+  title: "Legal Documents | Ketryon",
+  description:
+    "Access Ketryon's legal documents including Terms of Service, Privacy Policy, Cookie Policy, and Refund Policy. Important information about your rights and our policies.",
+  path: "/legal",
+});
 
 function Header() {
   return (
