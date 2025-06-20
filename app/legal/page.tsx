@@ -1,6 +1,5 @@
-import { BASE_URL, LEGAL_PAGE_LINK_CARDS } from "@/constants";
+import { LEGAL_PAGE_LINK_CARDS } from "@/constants";
 import Link from "next/link";
-import Script from "next/script";
 
 function Header() {
   return (
@@ -48,30 +47,9 @@ function Cards() {
 
 export default function LegalPage() {
   return (
-    <>
-      <Script
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: "Legal Documents | webarc.day",
-            description:
-              "Access webarc.day's legal documents including Terms of Service, Privacy Policy, Cookie Policy, and Refund Policy.",
-            publisher: {
-              "@type": "Organization",
-              name: "webarc.day",
-              url: BASE_URL,
-            },
-          }),
-        }}
-        id="legal-schema"
-        type="application/ld+json"
-      />
-
-      <main className="relative mx-auto flex w-full max-w-5xl flex-col gap-y-4 px-4 py-16">
-        <Header />
-        <Cards />
-      </main>
-    </>
+    <main className="relative mx-auto flex w-full max-w-5xl flex-col gap-y-4 px-4 py-16">
+      <Header />
+      <Cards />
+    </main>
   );
 }
