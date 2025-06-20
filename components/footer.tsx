@@ -51,7 +51,7 @@ export function Footer() {
             <p className="text-sm text-gray-600">
               © {new Date().getFullYear()} Ketryon. All rights reserved.
             </p>
-            <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+            <div className="flex gap-4">
               <Link
                 href="/legal/privacy-policy"
                 className="text-sm text-gray-600 transition hover:text-gray-900"
