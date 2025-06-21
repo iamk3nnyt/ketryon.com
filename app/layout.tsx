@@ -146,10 +146,8 @@ export default function RootLayout({
           </noscript>
         )}
         <MotionConfig reducedMotion="user">
-          <div className="flex min-h-screen flex-col">
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
+          {children}
+          <Footer />
         </MotionConfig>
       </body>
     </html>
