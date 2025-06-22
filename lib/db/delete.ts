@@ -1,4 +1,10 @@
-import { Collection, Db, Filter, FindOneAndDeleteOptions } from "mongodb";
+import {
+  Collection,
+  Db,
+  Filter,
+  FindOneAndDeleteOptions,
+  ObjectId,
+} from "mongodb";
 import { BaseDocument } from "./types";
 
 export class DeleteOperations<T extends BaseDocument> {
@@ -14,7 +20,7 @@ export class DeleteOperations<T extends BaseDocument> {
   }
 
   async deleteById(id: string): Promise<boolean> {
-    return this.deleteOne({ _id: id } as Filter<T>);
+    return this.deleteOne({ _id: new ObjectId(id) } as Filter<T>);
   }
 
   async deleteMany(filter: Filter<T>): Promise<number> {

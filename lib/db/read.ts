@@ -1,4 +1,4 @@
-import { Collection, Db, Filter, FindOptions } from "mongodb";
+import { Collection, Db, Filter, FindOptions, ObjectId } from "mongodb";
 import { BaseDocument, PaginatedResult, PaginationOptions } from "./types";
 
 export class ReadOperations<T extends BaseDocument> {
@@ -15,7 +15,7 @@ export class ReadOperations<T extends BaseDocument> {
 
   async findById(id: string, options?: FindOptions): Promise<T | null> {
     const result = await this.collection.findOne(
-      { _id: id } as Filter<T>,
+      { _id: new ObjectId(id) } as Filter<T>,
       options,
     );
     return result as T | null;
