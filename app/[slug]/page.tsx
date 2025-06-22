@@ -30,6 +30,7 @@ export async function generateMetadata({
       title: article.title,
       description: article.excerpt,
       path: `/blog/${article.slug}`,
+      ogType: "article",
       schema: {
         type: "Article",
         publishedTime: article.date,

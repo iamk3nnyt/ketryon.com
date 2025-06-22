@@ -1,15 +1,27 @@
 import { BackLink } from "@/components/back-link";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = buildMetadata({
-  type: "legal",
-  title: "Privacy Policy | Ketryon",
-  description:
-    "Learn about how Ketryon collects, uses, and protects your personal information. Understand your privacy rights and data protection measures.",
-  path: "/legal/privacy-policy",
-  documentType: "privacy",
-});
+export const metadata: Metadata = buildMetadata(
+  {
+    title: "Privacy Policy - Ketryon",
+    description:
+      "Our Privacy Policy outlines how Ketryon collects, uses, and protects your personal information when you use our services. Your privacy is important to us.",
+    path: "/legal/privacy-policy",
+    ogType: "website",
+    image: {
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Privacy Policy - Ketryon",
+    },
+    schema: {
+      type: "WebPage",
+    },
+  },
+  siteConfig,
+);
 
 function Header() {
   return (

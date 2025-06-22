@@ -1,15 +1,27 @@
 import { BackLink } from "@/components/back-link";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = buildMetadata({
-  type: "legal",
-  title: "Refund Policy | Ketryon",
-  description:
-    "Learn about Ketryon's refund and cancellation policies for our development services and consulting work.",
-  path: "/legal/refund",
-  documentType: "refund",
-});
+export const metadata: Metadata = buildMetadata(
+  {
+    title: "Refund Policy - Ketryon",
+    description:
+      "Our Refund Policy details the terms and conditions for refunds on Ketryon's services. Understand our process for project cancellations and payments.",
+    path: "/legal/refund",
+    ogType: "website",
+    image: {
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Refund Policy - Ketryon",
+    },
+    schema: {
+      type: "WebPage",
+    },
+  },
+  siteConfig,
+);
 
 function Header() {
   return (

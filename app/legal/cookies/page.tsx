@@ -1,15 +1,27 @@
 import { BackLink } from "@/components/back-link";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = buildMetadata({
-  type: "legal",
-  title: "Cookie Policy | Ketryon",
-  description:
-    "Learn about how Ketryon uses cookies and similar technologies to enhance your browsing experience and improve our services.",
-  path: "/legal/cookies",
-  documentType: "cookies",
-});
+export const metadata: Metadata = buildMetadata(
+  {
+    title: "Cookie Policy - Ketryon",
+    description:
+      "Ketryon's Cookie Policy explains what cookies are, how we use them, and your choices regarding cookies. Learn how we improve your browsing experience.",
+    path: "/legal/cookies",
+    ogType: "website",
+    image: {
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Cookie Policy - Ketryon",
+    },
+    schema: {
+      type: "WebPage",
+    },
+  },
+  siteConfig,
+);
 
 function Header() {
   return (

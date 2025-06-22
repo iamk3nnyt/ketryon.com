@@ -5,12 +5,39 @@ import { Marquee } from "@/components/marquee";
 import { TrustBadge } from "@/components/trust-badge";
 import { team } from "@/constants";
 import { getArticles } from "@/lib/data/blog";
+import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import Arrow from "@/public/arrow.svg";
 import { ArrowRight, Check } from "lucide-react";
 import { Handlee } from "next/font/google";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = buildMetadata(
+  {
+    title: "Ketryon - Web Development & Design",
+    description:
+      "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
+    path: "/",
+    ogType: "website",
+    image: {
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Ketryon - Web Development & Design",
+    },
+    schema: {
+      type: "Organization",
+      name: "Ketryon",
+      url: siteConfig.siteUrl,
+      logo: siteConfig.siteUrl + siteConfig.defaultImage.url,
+      email: "kenny@ketryon.com",
+    },
+  },
+  siteConfig,
+);
 
 const handlee = Handlee({ weight: ["400"], subsets: ["latin"] });
 

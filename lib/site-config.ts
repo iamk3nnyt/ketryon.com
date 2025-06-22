@@ -3,7 +3,7 @@ import { type MetadataConfig } from "./metadata";
 
 export const siteConfig: Omit<MetadataConfig, "schema"> = {
   siteUrl: BASE_URL,
-  siteName: "kennyt.me",
+  siteName: "ketryon.com",
   defaultImage: {
     url: "/og.png",
     width: 1200,
@@ -12,7 +12,7 @@ export const siteConfig: Omit<MetadataConfig, "schema"> = {
   locale: "en_US",
   inLanguage: "en-US",
   article: {
-    section: "Design & Development",
+    section: "Ketryon",
   },
   twitter: {
     card: "summary_large_image",

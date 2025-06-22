@@ -1,5 +1,4 @@
 import { Footer } from "@/components/footer";
-import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { MotionConfig } from "motion/react";
@@ -19,25 +18,36 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-const baseMetadata = buildMetadata(
-  {
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: "Ketryon - Web Development & Design",
+  description:
+    "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
+  openGraph: {
     title: "Ketryon - Web Development & Design",
     description:
       "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
-    path: "/",
-    schema: {
-      type: "Organization",
-      name: "Ketryon",
-      url: siteConfig.siteUrl,
-      logo: siteConfig.siteUrl + siteConfig.defaultImage.url,
-      email: "kenny@ketryon.com",
-    },
+    url: siteConfig.siteUrl,
+    siteName: siteConfig.siteName,
+    images: [
+      {
+        url: `${siteConfig.siteUrl}/og.png`,
+        width: 1200,
+        height: 630,
+        alt: "Ketryon - Web Development & Design",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
-  siteConfig,
-);
-
-export const metadata: Metadata = {
-  ...baseMetadata,
+  twitter: {
+    card: "summary_large_image",
+    title: "Ketryon - Web Development & Design",
+    description:
+      "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
+    images: [`${siteConfig.siteUrl}/og.png`],
+    creator: siteConfig.twitter.creator,
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",

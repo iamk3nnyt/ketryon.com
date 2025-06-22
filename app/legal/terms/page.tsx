@@ -1,15 +1,27 @@
 import { BackLink } from "@/components/back-link";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = buildMetadata({
-  type: "legal",
-  title: "Terms of Service | Ketryon",
-  description:
-    "Learn about the terms and conditions for using Ketryon's services. Understand your rights and obligations when working with our development team.",
-  path: "/legal/terms",
-  documentType: "terms",
-});
+export const metadata: Metadata = buildMetadata(
+  {
+    title: "Terms of Service - Ketryon",
+    description:
+      "Learn about the terms and conditions for using Ketryon's services. Understand your rights and obligations when working with our development team.",
+    path: "/legal/terms",
+    ogType: "website",
+    image: {
+      url: "/og.png",
+      width: 1200,
+      height: 630,
+      alt: "Terms of Service - Ketryon",
+    },
+    schema: {
+      type: "WebPage",
+    },
+  },
+  siteConfig,
+);
 
 function Header() {
   return (
