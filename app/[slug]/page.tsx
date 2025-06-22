@@ -1,7 +1,8 @@
 import { AppImage } from "@/components/app-image";
 import { BASE_URL } from "@/constants";
 import { getArticleBySlug, getRelatedArticles } from "@/lib/data/blog";
-import { buildMetadata, extractKeywords } from "@/lib/metadata";
+import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import { ArrowLeft, Clock } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -22,28 +23,32 @@ export async function generateMetadata({
   }
 
   const wordCount = article.content.split(/\s+/).length;
-  const readingTimeISO = `PT${article.readTime.split(" ")[0]}M`;
+  const readingTime = article.readTime.replace(" ", "");
 
-  return buildMetadata({
-    type: "article",
-    title: `${article.title} - Ketryon's Blog`,
-    description: article.excerpt,
-    path: `/${article.slug}`,
-    publishedTime: article.date,
-    modifiedTime: article.date,
-    author: article.author.name,
-    wordCount,
-    readingTime: readingTimeISO,
-    keywords: extractKeywords(article.content),
-    image: article.image
-      ? {
-          url: article.image,
-          width: 1200,
-          height: 630,
-          alt: article.title,
-        }
-      : undefined,
-  });
+  return buildMetadata(
+    {
+      title: article.title,
+      description: article.excerpt,
+      path: `/blog/${article.slug}`,
+      schema: {
+        type: "Article",
+        publishedTime: article.date,
+        modifiedTime: article.date,
+        author: article.author.name,
+        wordCount,
+        readingTime,
+      },
+      image: article.image
+        ? {
+            url: article.image,
+            width: 1200,
+            height: 630,
+            alt: article.title,
+          }
+        : undefined,
+    },
+    siteConfig,
+  );
 }
 
 export default async function BlogArticlePage({

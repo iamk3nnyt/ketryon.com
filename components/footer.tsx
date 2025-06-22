@@ -8,7 +8,7 @@ const navigation = {
     { name: "Transparency", href: "/#transparency" },
     { name: "Services", href: "/#services" },
     { name: "FAQ", href: "/#faq" },
-    { name: "Blog", href: "/blog" },
+    { name: "Legal", href: "/legal" },
     { name: "Contact", href: "/#book-a-call" },
   ],
 };

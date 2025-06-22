@@ -1,6 +1,6 @@
 import { Footer } from "@/components/footer";
-import { BASE_URL } from "@/constants";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { MotionConfig } from "motion/react";
 import type { Metadata, Viewport } from "next";
@@ -19,40 +19,25 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-const baseMetadata = buildMetadata({
-  type: "website",
-  title: "Ketryon - Web Development & Design",
-  description:
-    "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
-  path: "/",
-  organization: {
-    name: "Ketryon",
-    url: BASE_URL,
-    logo: BASE_URL + "/logo.png",
-    email: "kenny@ketryon.com",
+const baseMetadata = buildMetadata(
+  {
+    title: "Ketryon - Web Development & Design",
+    description:
+      "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
+    path: "/",
+    schema: {
+      type: "Organization",
+      name: "Ketryon",
+      url: siteConfig.siteUrl,
+      logo: siteConfig.siteUrl + siteConfig.defaultImage.url,
+      email: "kenny@ketryon.com",
+    },
   },
-  image: {
-    url: "/og.png",
-    width: 1200,
-    height: 630,
-    alt: "Ketryon - Web Development & Design",
-  },
-});
+  siteConfig,
+);
 
 export const metadata: Metadata = {
   ...baseMetadata,
-  metadataBase: new URL(BASE_URL),
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -110,25 +95,6 @@ export default function RootLayout({
             }}
           />
         )}
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Ketryon",
-              url: BASE_URL,
-              logo: BASE_URL + "/logo.png",
-              contactPoint: {
-                "@type": "ContactPoint",
-                contactType: "customer service",
-                email: "kenny@ketryon.com",
-                availableLanguage: ["English"],
-              },
-            }),
-          }}
-        />
       </head>
       <body className={cn("antialiased", sora.className)}>
         {process.env.NODE_ENV === "production" && (

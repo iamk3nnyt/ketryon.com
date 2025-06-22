@@ -1,5 +1,13 @@
-import { BASE_URL } from "@/constants";
 import type { Metadata } from "next";
+import {
+  Blog,
+  BlogPosting,
+  Organization,
+  Person,
+  WebPage,
+  WebSite,
+  WithContext,
+} from "schema-dts";
 
 interface BaseMetadata {
   title: string;
@@ -11,35 +19,33 @@ interface BaseMetadata {
     height: number;
     alt: string;
   };
+  robots?: Metadata["robots"];
+  ogType?: "website" | "article" | "profile";
+  schema?: Schema;
 }
 
-interface WebsiteMetadata extends BaseMetadata {
-  type: "website";
-  organization?: {
+interface SchemaPerson {
+  type: "Person";
+  jobTitle: string;
+  worksFor?: {
     name: string;
     url: string;
-    logo: string;
-    email: string;
+    description: string;
+    sameAs: string[];
   };
 }
 
-interface LegalMetadata extends BaseMetadata {
-  type: "legal";
-  documentType: "privacy" | "terms" | "cookies" | "refund";
-}
-
-interface BlogArticleMetadata extends BaseMetadata {
-  type: "article";
+interface SchemaArticle {
+  type: "Article";
   publishedTime: string;
   modifiedTime: string;
   author: string;
   wordCount: number;
   readingTime: string;
-  keywords: string[];
 }
 
-interface BlogIndexMetadata extends BaseMetadata {
-  type: "blog";
+interface SchemaBlog {
+  type: "Blog";
   posts: Array<{
     title: string;
     slug: string;
@@ -49,91 +55,107 @@ interface BlogIndexMetadata extends BaseMetadata {
   }>;
 }
 
-type PageMetadata =
-  | WebsiteMetadata
-  | LegalMetadata
-  | BlogArticleMetadata
-  | BlogIndexMetadata;
+interface SchemaWebPage {
+  type: "WebPage";
+  about?: {
+    name: string;
+    url: string;
+    type: "Person" | "Organization";
+  };
+}
 
-function generateSchemaOrg(metadata: PageMetadata) {
-  const baseSchema = {
-    "@context": "https://schema.org",
-    "@type": metadata.type === "article" ? "BlogPosting" : "WebPage",
-    name: metadata.title,
-    description: metadata.description,
-    url: `${BASE_URL}${metadata.path}`,
-    inLanguage: "en-US",
+interface SchemaOrganization {
+  type: "Organization";
+  name: string;
+  url: string;
+  logo: string;
+  email: string;
+}
+
+interface SchemaWebSite {
+  type: "WebSite";
+}
+
+type Schema =
+  | SchemaPerson
+  | SchemaArticle
+  | SchemaBlog
+  | SchemaWebPage
+  | SchemaWebSite
+  | SchemaOrganization;
+
+export interface MetadataConfig {
+  siteUrl: string;
+  siteName: string;
+  defaultImage: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  locale?: string;
+  inLanguage?: string;
+  article?: {
+    section: string;
+  };
+  twitter: {
+    card: "summary" | "summary_large_image";
+    creator?: string;
+  };
+}
+
+function generateSchemaOrg(
+  base: BaseMetadata,
+  config: MetadataConfig,
+): WithContext<BlogPosting | Blog | Person | WebPage | WebSite | Organization> {
+  const { schema } = base;
+
+  const baseCreativeWorkSchema = {
+    name: base.title,
+    description: base.description,
+    url: `${config.siteUrl}${base.path}`,
+    inLanguage: config.inLanguage,
     isAccessibleForFree: true,
     isFamilyFriendly: true,
   };
 
-  switch (metadata.type) {
-    case "website":
+  switch (schema?.type) {
+    case "Article":
       return {
-        ...baseSchema,
-        "@type": "WebSite",
-        ...(metadata.organization && {
-          publisher: {
-            "@type": "Organization",
-            name: metadata.organization.name,
-            url: metadata.organization.url,
-            logo: {
-              "@type": "ImageObject",
-              url: metadata.organization.logo,
-            },
-            contactPoint: {
-              "@type": "ContactPoint",
-              contactType: "customer service",
-              email: metadata.organization.email,
-              availableLanguage: ["English"],
-            },
-          },
-        }),
-      };
-    case "legal":
-      return {
-        ...baseSchema,
-        "@type": "WebPage",
-        about: {
-          "@type": "Thing",
-          name:
-            metadata.documentType === "privacy"
-              ? "Privacy Policy"
-              : metadata.documentType === "terms"
-                ? "Terms of Service"
-                : metadata.documentType === "cookies"
-                  ? "Cookie Policy"
-                  : "Refund Policy",
-        },
-      };
-    case "article":
-      return {
-        ...baseSchema,
+        "@context": "https://schema.org",
         "@type": "BlogPosting",
-        headline: metadata.title,
-        articleBody: metadata.description,
-        wordCount: metadata.wordCount,
-        datePublished: metadata.publishedTime,
-        dateModified: metadata.modifiedTime,
-        keywords: metadata.keywords,
-        timeRequired: metadata.readingTime,
-        articleSection: "Design & Development",
-        image: metadata.image
+        ...baseCreativeWorkSchema,
+        headline: base.title,
+        articleBody: base.description,
+        wordCount: schema.wordCount,
+        datePublished: schema.publishedTime,
+        dateModified: schema.modifiedTime,
+        timeRequired: schema.readingTime,
+        articleSection: config.article?.section,
+        image: base.image
           ? {
               "@type": "ImageObject",
-              url: metadata.image.url,
-              width: metadata.image.width,
-              height: metadata.image.height,
+              url: base.image.url,
+              width: {
+                "@type": "QuantitativeValue",
+                value: base.image.width,
+                unitCode: "E37",
+              },
+              height: {
+                "@type": "QuantitativeValue",
+                value: base.image.height,
+                unitCode: "E37",
+              },
             }
           : undefined,
       };
-    case "blog":
+    case "Blog":
       return {
-        ...baseSchema,
+        "@context": "https://schema.org",
         "@type": "Blog",
-        blogPosts: metadata.posts.map((post, index) => ({
+        ...baseCreativeWorkSchema,
+        blogPost: schema.posts.map((post, index) => ({
           "@type": "BlogPosting",
-          "@id": `${BASE_URL}/blog/${post.slug}`,
+          "@id": `${config.siteUrl}/blog/${post.slug}`,
           headline: post.title,
           description: post.excerpt,
           datePublished: post.date,
@@ -142,72 +164,140 @@ function generateSchemaOrg(metadata: PageMetadata) {
             ? {
                 "@type": "ImageObject",
                 url: post.image,
-                width: 1200,
-                height: 630,
+                width: {
+                  "@type": "QuantitativeValue",
+                  value: 1200,
+                  unitCode: "E37",
+                },
+                height: {
+                  "@type": "QuantitativeValue",
+                  value: 630,
+                  unitCode: "E37",
+                },
               }
             : undefined,
           position: index + 1,
         })),
       };
+    case "Person":
+      return {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        ...baseCreativeWorkSchema,
+        jobTitle: schema.jobTitle,
+        worksFor: schema.worksFor
+          ? {
+              "@type": "Organization",
+              name: schema.worksFor.name,
+              url: schema.worksFor.url,
+              description: schema.worksFor.description,
+              sameAs: schema.worksFor.sameAs,
+            }
+          : undefined,
+      };
+    case "Organization":
+      return {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: schema.name,
+        url: schema.url,
+        logo: schema.logo,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          email: schema.email,
+          availableLanguage: [config.inLanguage || "English"],
+        },
+      };
+    case "WebPage":
+      return {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        ...baseCreativeWorkSchema,
+        ...(schema.about && {
+          about: {
+            "@type": schema.about.type,
+            name: schema.about.name,
+            url: schema.about.url,
+          },
+        }),
+      };
+    case "WebSite":
+      return {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        ...baseCreativeWorkSchema,
+      };
     default:
-      return baseSchema;
+      return {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        ...baseCreativeWorkSchema,
+      };
   }
 }
 
-export function buildMetadata(metadata: PageMetadata): Metadata {
+export function buildMetadata(
+  base: BaseMetadata,
+  config: MetadataConfig,
+): Metadata {
   const defaultImage = {
-    url: "/og.png",
-    width: 1200,
-    height: 630,
-    alt: metadata.title,
+    ...config.defaultImage,
+    alt: base.title,
   };
 
-  return {
-    title: metadata.title,
-    description: metadata.description,
+  const imageToUse = base.image ?? defaultImage;
+  const jsonLd = base.schema ? generateSchemaOrg(base, config) : undefined;
+
+  const result: Metadata = {
+    metadataBase: new URL(config.siteUrl),
+    title: base.title,
+    description: base.description,
     openGraph: {
-      title: metadata.title,
-      description: metadata.description,
-      url: metadata.path,
-      type: metadata.type === "article" ? "article" : "website",
-      ...(metadata.type === "article" && {
-        publishedTime: (metadata as BlogArticleMetadata).publishedTime,
-        modifiedTime: (metadata as BlogArticleMetadata).modifiedTime,
-        authors: ["Kenny Tran"],
-      }),
-      images: [metadata.image || defaultImage],
+      title: base.title,
+      description: base.description,
+      url: base.path,
+      siteName: config.siteName,
+      images: [
+        {
+          url: imageToUse.url,
+          width: imageToUse.width,
+          height: imageToUse.height,
+          alt: imageToUse.alt,
+        },
+      ],
+      locale: config.locale ?? "en_US",
+      type:
+        base.ogType ??
+        (base.schema?.type === "Article" ? "article" : "website"),
     },
     twitter: {
-      card: "summary_large_image",
-      title: metadata.title,
-      description: metadata.description,
-      images: [metadata.image?.url || defaultImage.url],
-      creator: "@itsk3nny_",
+      card: config.twitter.card,
+      title: base.title,
+      description: base.description,
+      images: [imageToUse.url],
+      ...(config.twitter.creator && { creator: config.twitter.creator }),
     },
     alternates: {
-      canonical: metadata.path,
+      canonical: base.path,
     },
-    other: {
-      "application/ld+json": JSON.stringify(generateSchemaOrg(metadata)),
-    },
+    ...(base.robots && { robots: base.robots }),
+    ...(jsonLd && {
+      other: {
+        "application/ld+json": JSON.stringify(jsonLd, null, 2),
+      },
+    }),
   };
-}
 
-export function extractKeywords(content: string): string[] {
-  const commonTerms = ["design", "development", "web", "tutorial", "essay"];
-  const words = content.toLowerCase().split(/\W+/);
-  const wordFreq = new Map<string, number>();
+  if (base.schema?.type === "Article") {
+    result.openGraph = {
+      ...result.openGraph,
+      type: "article",
+      publishedTime: base.schema.publishedTime,
+      modifiedTime: base.schema.modifiedTime,
+      authors: [base.schema.author],
+    };
+  }
 
-  words.forEach((word) => {
-    if (word.length > 3) {
-      wordFreq.set(word, (wordFreq.get(word) || 0) + 1);
-    }
-  });
-
-  const topWords = Array.from(wordFreq.entries())
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5)
-    .map(([word]) => word);
-
-  return [...new Set([...commonTerms, ...topWords])];
+  return result;
 }
