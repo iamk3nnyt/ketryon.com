@@ -31,21 +31,21 @@ export const metadata: Metadata = {
     siteName: siteConfig.siteName,
     images: [
       {
-        url: `${siteConfig.siteUrl}/og.png`,
-        width: 1200,
-        height: 630,
-        alt: "Ketryon - Web Development & Design",
+        url: siteConfig.defaultImage.url,
+        width: siteConfig.defaultImage.width,
+        height: siteConfig.defaultImage.height,
+        alt: siteConfig.siteName,
       },
     ],
-    locale: "en_US",
+    locale: siteConfig.locale,
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: siteConfig.twitter.card,
     title: "Ketryon - Web Development & Design",
     description:
       "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
-    images: [`${siteConfig.siteUrl}/og.png`],
+    images: [siteConfig.defaultImage.url],
     creator: siteConfig.twitter.creator,
   },
   icons: {
