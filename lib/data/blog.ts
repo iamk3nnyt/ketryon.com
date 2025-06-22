@@ -1,19 +1,33 @@
 import { CreateOperations } from "@/lib/db/create";
 import { DeleteOperations } from "@/lib/db/delete";
 import { ReadOperations } from "@/lib/db/read";
-import { BaseDocument } from "@/lib/db/types";
 import client from "@/lib/mongodb";
 import { Article } from "@/types/blog";
 import { Filter } from "mongodb";
+
+const ARTICLE_PREVIEW_PROJECTION = {
+  _id: 0,
+  slug: 1,
+  title: 1,
+  excerpt: 1,
+  date: 1,
+  image: 1,
+  tag: 1,
+  author: 1,
+};
+
+const FULL_ARTICLE_PROJECTION = {
+  ...ARTICLE_PREVIEW_PROJECTION,
+  content: 1,
+  readTime: 1,
+};
 
 export async function getArticles(filter: Filter<Article> = {}) {
   const db = client.db(process.env.DB);
   const readOps = new ReadOperations<Article>(db, "articles");
 
   return readOps.findMany(filter, {
-    projection: {
-      _id: 0,
-    },
+    projection: ARTICLE_PREVIEW_PROJECTION,
     sort: { date: -1 },
   });
 }
@@ -25,34 +39,9 @@ export async function getArticleBySlug(slug: string) {
   return readOps.findOne(
     { slug },
     {
-      projection: {
-        _id: 0,
-      },
+      projection: FULL_ARTICLE_PROJECTION,
     },
   );
-}
-
-export async function createArticle(data: Omit<Article, keyof BaseDocument>) {
-  const db = client.db(process.env.DB);
-  const createOps = new CreateOperations<Article>(db, "articles");
-
-  return createOps.createOne(data);
-}
-
-export async function createManyArticles(
-  data: Array<Omit<Article, keyof BaseDocument>>,
-) {
-  const db = client.db(process.env.DB);
-  const createOps = new CreateOperations<Article>(db, "articles");
-
-  return createOps.createMany(data);
-}
-
-export async function deleteArticle(slug: string) {
-  const db = client.db(process.env.DB);
-  const deleteOps = new DeleteOperations<Article>(db, "articles");
-
-  return deleteOps.deleteOne({ slug });
 }
 
 export async function deleteAllArticles() {
@@ -74,9 +63,7 @@ export async function getPaginatedArticles(page: number, limit: number) {
       sort: { date: -1 },
     },
     {
-      projection: {
-        _id: 0,
-      },
+      projection: ARTICLE_PREVIEW_PROJECTION,
     },
   );
 }
@@ -86,40 +73,6 @@ export async function getArticleCount() {
   const readOps = new ReadOperations<Article>(db, "articles");
 
   return readOps.count({});
-}
-
-export async function getArticlesByDateRange(
-  startDate: string,
-  endDate: string,
-) {
-  return getArticles({
-    date: {
-      $gte: startDate,
-      $lte: endDate,
-    },
-  });
-}
-
-export async function getArticlesByTitle(title: string) {
-  return getArticles({
-    title: { $regex: title, $options: "i" },
-  });
-}
-
-export async function getRecentArticles(limit: number = 5) {
-  const db = client.db(process.env.DB);
-  const readOps = new ReadOperations<Article>(db, "articles");
-
-  return readOps.findMany(
-    {},
-    {
-      projection: {
-        _id: 0,
-      },
-      sort: { date: -1 },
-      limit,
-    },
-  );
 }
 
 export async function seedArticles() {
@@ -256,7 +209,6 @@ export async function seedArticles() {
 export async function getRelatedArticles(slug: string, limit: number = 3) {
   const db = client.db(process.env.DB);
   const readOps = new ReadOperations<Article>(db, "articles");
-
   const currentArticle = await readOps.findOne(
     { slug },
     {
@@ -279,14 +231,7 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
         ],
       },
       {
-        projection: {
-          _id: 0,
-          slug: 1,
-          title: 1,
-          excerpt: 1,
-          date: 1,
-          image: 1,
-        },
+        projection: ARTICLE_PREVIEW_PROJECTION,
         limit,
       },
     );
@@ -298,35 +243,12 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
         $and: [{ tag: currentArticle.tag }, { slug: { $ne: slug } }],
       },
       {
-        projection: {
-          _id: 0,
-          slug: 1,
-          title: 1,
-          excerpt: 1,
-          date: 1,
-          image: 1,
-        },
+        projection: ARTICLE_PREVIEW_PROJECTION,
         sort: { date: -1 },
         limit,
       },
     );
   }
 
-  return readOps.findMany(
-    {
-      slug: { $ne: slug },
-    },
-    {
-      projection: {
-        _id: 0,
-        slug: 1,
-        title: 1,
-        excerpt: 1,
-        date: 1,
-        image: 1,
-      },
-      sort: { date: -1 },
-      limit,
-    },
-  );
+  return [];
 }
