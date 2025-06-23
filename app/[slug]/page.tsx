@@ -1,12 +1,26 @@
 import { AppImage } from "@/components/app-image";
 import { BASE_URL } from "@/constants";
-import { getArticleBySlug, getRelatedArticles } from "@/lib/data/blog";
+import {
+  getArticleSlugs,
+  getRelatedArticles,
+  getArticleBySlug as uncachedGetArticleBySlug,
+} from "@/lib/data/blog";
 import { buildMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site-config";
 import { ArrowLeft, Clock } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cache } from "react";
+
+const getArticleBySlug = cache(uncachedGetArticleBySlug);
+
+export async function generateStaticParams() {
+  const articles = await getArticleSlugs();
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
 
 export async function generateMetadata({
   params,
@@ -15,6 +29,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const slug = (await params).slug;
   const article = await getArticleBySlug(slug);
+
   if (!article) {
     return {
       title: "Article Not Found",

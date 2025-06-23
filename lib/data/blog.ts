@@ -252,3 +252,15 @@ export async function getRelatedArticles(slug: string, limit: number = 3) {
 
   return [];
 }
+
+export async function getArticleSlugs() {
+  const db = client.db(process.env.DB);
+  const readOps = new ReadOperations<Article>(db, "articles");
+
+  return readOps.findMany(
+    {},
+    {
+      projection: { slug: 1, _id: 0 },
+    },
+  );
+}
