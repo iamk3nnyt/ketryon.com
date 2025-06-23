@@ -11,9 +11,9 @@ export const metadata: Metadata = buildMetadata(
     path: "/legal/cookies",
     ogType: "website",
     image: {
-      url: "/og.png",
-      width: 1200,
-      height: 630,
+      url: siteConfig.defaultImage.url,
+      width: siteConfig.defaultImage.width,
+      height: siteConfig.defaultImage.height,
       alt: "Cookie Policy - Ketryon",
     },
     schema: {
