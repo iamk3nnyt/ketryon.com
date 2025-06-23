@@ -20,11 +20,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
-  title: "Ketryon - Web Development & Design",
+  title: siteConfig.siteName,
   description:
     "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
   openGraph: {
-    title: "Ketryon - Web Development & Design",
+    title: siteConfig.siteName,
     description:
       "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
     url: siteConfig.siteUrl,
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: siteConfig.twitter.card,
-    title: "Ketryon - Web Development & Design",
+    title: siteConfig.siteName,
     description:
       "Ketryon is a technology company focused on building innovative web solutions. We specialize in web development, design, and creating performant digital experiences.",
     images: [siteConfig.defaultImage.url],

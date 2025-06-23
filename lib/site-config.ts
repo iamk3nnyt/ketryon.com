@@ -12,7 +12,7 @@ export const siteConfig: Omit<MetadataConfig, "schema"> = {
   locale: "en_US",
   inLanguage: "en-US",
   article: {
-    section: "Ketryon",
+    section: "Web development and design",
   },
   twitter: {
     card: "summary_large_image",
