@@ -2,8 +2,6 @@
 
 Ketryon is a technology company building transparent and efficient software solutions. We specialize in open-source web development and design to deliver exceptional digital experiences for our clients.
 
-This repository contains the full source code for our company website, [ketryon.com](https://ketryon.com), built with Next.js, TypeScript, and Tailwind CSS.
-
 ![Next.js](https://img.shields.io/badge/Next.js-15.3.3-black?style=for-the-badge&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
