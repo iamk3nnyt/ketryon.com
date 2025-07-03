@@ -7,8 +7,8 @@ export async function GET(request: Request) {
 
   const article = slug ? await getArticleBySlug(slug) : null;
   const title = article?.title || "Ketryon";
-  const excerpt =
-    article?.excerpt || "Transparent software for a better world.";
+  const author = article?.author?.name || "Ketryon Team";
+  const tag = article?.tag;
 
   return new ImageResponse(
     (
@@ -83,11 +83,33 @@ export async function GET(request: Request) {
           >
             {title}
           </h1>
-          <p style={{ fontSize: "32px", textAlign: "left", color: "#374151" }}>
-            {excerpt}
-          </p>
         </div>
-        <div style={{ height: "48px" }} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <p style={{ fontSize: "32px", color: "#374151" }}>{author}</p>
+          {tag && (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#eff6ff",
+                color: "#1d4ed8",
+                padding: "12px 24px",
+                borderRadius: "9999px",
+                fontSize: "28px",
+              }}
+            >
+              {tag}
+            </div>
+          )}
+        </div>
       </div>
     ),
     {
