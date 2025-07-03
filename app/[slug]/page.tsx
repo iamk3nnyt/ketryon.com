@@ -54,14 +54,12 @@ export async function generateMetadata({
         wordCount,
         readingTime,
       },
-      image: article.image
-        ? {
-            url: article.image,
-            width: 1200,
-            height: 630,
-            alt: article.title,
-          }
-        : undefined,
+      image: {
+        url: `${BASE_URL}/api/og?slug=${article.slug}`,
+        width: 1200,
+        height: 630,
+        alt: article.title,
+      },
     },
     siteConfig,
   );

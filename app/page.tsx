@@ -599,7 +599,7 @@ async function Blog() {
       <ul className="divide-y divide-gray-100">
         {posts.map((post, index) => (
           <li
-            key={post.id}
+            key={index}
             className={cn(index ? "py-7" : "pb-7", "group flex flex-col gap-2")}
           >
             {post.tag && (
