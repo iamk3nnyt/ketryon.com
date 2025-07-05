@@ -40,8 +40,8 @@ Ketryon is a technology company building transparent and efficient software solu
 
 1. **Clone the repo:**
    ```sh
-   git clone https://github.com/iamk3nnyt/kennyt.me.git
-   cd kennyt.me
+   git clone https://github.com/iamk3nnyt/ketryon.com.git
+   cd ketryon.com
    ```
 2. **Install dependencies:**
    ```sh
